@@ -1,0 +1,13 @@
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\bin\Debug\StegIt.exe.config
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\bin\Debug\StegIt.exe
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\bin\Debug\StegIt.pdb
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.csprojResolveAssemblyReference.cache
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\MainWindow.baml
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\MainWindow.g.cs
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\App.g.cs
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt_MarkupCompile.cache
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.g.resources
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.Properties.Resources.resources
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.csproj.GenerateResource.Cache
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.exe
+c:\users\rybzor\documents\visual studio 2013\Projects\StegIt\StegIt\obj\Debug\StegIt.pdb
