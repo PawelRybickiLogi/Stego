@@ -2,8 +2,10 @@
 
 namespace StegItCaliburnWay.ViewModels
 {
-    public interface IStegenographyMethodViewModel : IScreen
+    public interface IStegenographyMethodViewModel : IScreen, IStegenographyOperations
     {
-        void Hide();
+        byte[] ContainerRawMessage { get; set; }
+        byte[] MessageToHide { get; set; }
+        byte[] HiddenMessage { get; set; }
     }
 }

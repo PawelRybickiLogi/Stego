@@ -9,12 +9,12 @@ namespace StegItCaliburnWay.ViewModels
 {
     public class ShellViewModel : Conductor<IStegenographyMethodViewModel>.Collection.OneActive
     {
-        private readonly TextViewModel _textViewModel;
+
         private readonly FilePickerDialog _filePickerDialog;
 
         public override string DisplayName
         {
-            get { return "Dojebana apka Pawła Rybickiego"; }
+            get { return "StegIt - Paweł Rybicki"; }
             set { }
         }
 
@@ -24,12 +24,11 @@ namespace StegItCaliburnWay.ViewModels
             ThirdViewModel thirdViewModel,
             FilePickerDialog filePickerDialog)
         {
-            _textViewModel = textViewModel;
             _filePickerDialog = filePickerDialog;
             
             Items.AddRange(new IStegenographyMethodViewModel[]
             {
-                imageViewModel, textViewModel, thirdViewModel
+                textViewModel, imageViewModel, thirdViewModel
             });
         }
 
@@ -37,7 +36,19 @@ namespace StegItCaliburnWay.ViewModels
         {
             try
             {
-                _textViewModel.ContainerMessage = new string(_filePickerDialog.OpenReadDialog());
+                ActiveItem.ContainerRawMessage = _filePickerDialog.OpenReadDialog();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        public void ReadMessageToHide()
+        {
+            try
+            {
+                ActiveItem.MessageToHide = _filePickerDialog.OpenReadDialog();
             }
             catch (Exception e)
             {
@@ -47,7 +58,24 @@ namespace StegItCaliburnWay.ViewModels
 
         public void Hide()
         {
-            this.ActiveItem.Hide();
+            ActiveItem.Hide();
+        }
+
+        public void Decode()
+        {
+            ActiveItem.Decode();
+        }
+
+        public void Clear()
+        {
+            ActiveItem.HiddenMessage = null;
+            ActiveItem.ContainerRawMessage = null;
+            ActiveItem.MessageToHide = null;
+        }
+
+        public void SaveToFile()
+        {
+            _filePickerDialog.OpenSaveDialog(ActiveItem.HiddenMessage);
         }
     }
 }

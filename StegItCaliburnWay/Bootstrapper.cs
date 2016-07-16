@@ -11,6 +11,7 @@ using System.Windows.Data;
 using Caliburn.Micro;
 using Ninject;
 using Ninject.Syntax;
+using StegIt.Text;
 using StegItCaliburnWay.ViewModels;
 
 namespace StegItCaliburnWay
@@ -24,7 +25,7 @@ namespace StegItCaliburnWay
             DefineKernelBindings(_kernel);
             Initialize();
         }
-
+        
         protected override void BuildUp(object instance)
         {
             _kernel.Inject(instance);

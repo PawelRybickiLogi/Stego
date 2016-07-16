@@ -17,7 +17,26 @@ namespace StegItCaliburnWay.ViewModels
 
         public void Hide()
         {
-            
+
         }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveToFile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Decode()
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] ContainerRawMessage { get; set; }
+        public byte[] MessageToHide { get; set; }
+        public byte[] HiddenMessage { get; set; }
     }
 }

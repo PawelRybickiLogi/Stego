@@ -5,7 +5,7 @@ namespace StegItCaliburnWay
 {
     public class FilePickerDialog
     {
-        public char[] OpenReadDialog()
+        public byte[] OpenReadDialog()
         {
             var dlg = new OpenFileDialog
             {
@@ -25,12 +25,12 @@ namespace StegItCaliburnWay
 
             var bytes = FileReader.ReadFile(dlg.FileName);
 
-            var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
+            //var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
 
-            return chars;
+            return bytes;
         }
 
-        public void OpenSaveDialog(char[] hiddenMessage)
+        public void OpenSaveDialog(byte[] hiddenMessage)
         {
             var dlg = new SaveFileDialog
             {

@@ -6,10 +6,14 @@
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:StegItCaliburnWay.Views"
              xmlns:cal="http://www.caliburnproject.org"
-                      
+             xmlns:converters="clr-namespace:StegItCaliburnWay.Logic.Converters"
+
              GlowBrush="{DynamicResource AccentColorBrush}"
              ShowIconOnTitleBar="False"
              Height="800" Width="800">
+    <controls:MetroWindow.Resources>
+        <converters:ByteToStringConverter x:Key="ByteToStringConverter" />
+    </controls:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"></RowDefinition>
@@ -31,7 +35,8 @@
                 <Button Grid.Column="0" Content="Wczytaj kontener" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
                         cal:Message.Attach="[Event Click]=[Action ReadContainer];"/>
                 
-                <Button Grid.Column="2" Content="Wczytaj wiadomość do ukrycia" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"/>
+                <Button Grid.Column="2" Content="Wczytaj wiadomość do ukrycia" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
+                        cal:Message.Attach="[Event Click]=[Action ReadMessageToHide];"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
@@ -44,7 +49,7 @@
                          cal:Message.Attach="[Event Click]=[Action Hide]"/>
             </Grid>
             <ScrollViewer Grid.Row="1">
-                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=HiddenMessage}"  />
+                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToStringConverter}}"  />
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="3">
@@ -53,9 +58,9 @@
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Zapisz do pliku" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
-            <Button Grid.Column="1" Content="Wyczyść wszystko" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
-            <Button Grid.Column="2" Content="Dekoduj plik" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="0" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="1" Content="Wyczyść wszystko" cal:Message.Attach="[Event Click]=[Action Clear]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="2" Content="Dekoduj plik" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
         </Grid>
 
     </Grid>

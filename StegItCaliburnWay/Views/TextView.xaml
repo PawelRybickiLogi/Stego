@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StegItCaliburnWay.Views"
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:converters="clr-namespace:StegItCaliburnWay.Logic.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:ByteToStringConverter x:Key="ByteToStringConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -26,16 +30,15 @@
                   SelectedIndex="0"
                   cal:Message.Attach="[Event SelectionChanged]=[Action TextMethodChanged($eventArgs)]" >
         </ComboBox>
-        
-        
-        <ScrollViewer Grid.Row="1" Grid.Column="0">
-            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding ContainerMessage}" />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="0">
+            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding ContainerRawMessage, Converter={StaticResource ByteToStringConverter}}" />
         </ScrollViewer>
         
         <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"></Label>
-        
-        <ScrollViewer Grid.Row="1" Grid.Column="2">
-            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding MessageToHide}"  />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="2">
+            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding MessageToHide, Converter={StaticResource ByteToStringConverter}}"  />
         </ScrollViewer>
     </Grid>
 </UserControl>

@@ -80,12 +80,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FilePickerDialog.cs" />
-    <Compile Include="FileReader.cs" />
-    <Compile Include="FileWriter.cs" />
-    <Compile Include="TextUtils.cs" />
+    <Compile Include="Utils\FilePickerDialog.cs" />
+    <Compile Include="Utils\FileReader.cs" />
+    <Compile Include="Utils\FileWriter.cs" />
+    <Compile Include="Logic\Converters\ByteToStringConverter.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticCoding.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticLettersValues.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCoding.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\TextCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\TextMethod.cs" />
+    <Compile Include="Utils\TextUtils.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\IStegenographyMethodViewModel.cs" />
+    <Compile Include="Logic\Steganography\IStegenographyOperations.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TextViewModel.cs" />
     <Compile Include="ViewModels\ThirdViewModel.cs" />

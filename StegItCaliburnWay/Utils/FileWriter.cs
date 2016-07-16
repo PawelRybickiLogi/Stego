@@ -5,13 +5,11 @@ namespace StegItCaliburnWay
 {
     class FileWriter
     {
-        public static void WriteToFile(String name, char[] chars)
+        public static void WriteToFile(String name, byte[] bytesToSave)
         {
             System.IO.FileStream fw = System.IO.File.OpenWrite(name);
 
-            var decoded = Encoding.UTF8.GetBytes(chars);
-
-            fw.Write(decoded, 0, decoded.Length);
+            fw.Write(bytesToSave, 0, bytesToSave.Length);
 
             fw.Close();
         }
