@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using StegItCaliburnWay.Utils;
+using Type = System.Type;
 
 namespace StegItCaliburnWay.Logic.Converters
 {
@@ -13,20 +14,7 @@ namespace StegItCaliburnWay.Logic.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
-            {
-                using (var ms = new System.IO.MemoryStream((byte[]) value))
-                {
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.CacheOption = BitmapCacheOption.OnLoad; 
-                    image.StreamSource = ms;
-                    image.EndInit();
-                    return image;
-                }
-            }
-
-            return new BitmapImage();
+            return ImageUtils.GetBitMapFromByteStream((byte[]) value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
