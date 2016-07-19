@@ -7,5 +7,6 @@ namespace StegItCaliburnWay.ViewModels
         byte[] ContainerRawMessage { get; set; }
         byte[] MessageToHide { get; set; }
         byte[] HiddenMessage { get; set; }
+        void OpenReadDialog();
     }
 }

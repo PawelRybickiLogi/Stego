@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />
+    <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\FilePickerDialog.cs" />
     <Compile Include="Utils\FileReader.cs" />
     <Compile Include="Utils\FileWriter.cs" />

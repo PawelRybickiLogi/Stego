@@ -11,7 +11,6 @@ namespace StegItCaliburnWay.Logic.TextSteganography
     public abstract class TextMethod
     {
         public abstract string Name { get; }
-
         public abstract byte[] PerformDecoding(TextViewModel textViewModel);
         public abstract byte[] PerformHiding(TextViewModel textViewModel);
     }

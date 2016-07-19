@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Caliburn.Micro;
 using StegIt.Text;
 using StegItCaliburnWay.Logic.TextSteganography;
+using StegItCaliburnWay.Utils;
 
 namespace StegItCaliburnWay.ViewModels
 {
@@ -14,14 +15,20 @@ namespace StegItCaliburnWay.ViewModels
 
     public class TextViewModel : Screen, IStegenographyMethodViewModel
     {
+        private readonly FilePickerDialog _filePickerDialog;
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
         private byte[] _hiddenMessage;
 
+        public List<TextMethod> TextMethods { get; set; }
+        private TextMethod _selectedTextMethod;
+
         public TextViewModel(
             SemanticCodingMethod semanticCodingMethod,
-            WhiteSpaceCodingMethod whiteSpaceCodingMethod)
+            WhiteSpaceCodingMethod whiteSpaceCodingMethod,
+            FilePickerDialog filePickerDialog)
         {
+            _filePickerDialog = filePickerDialog;
             TextMethods = new List<TextMethod>
             {
                 semanticCodingMethod,
@@ -36,10 +43,6 @@ namespace StegItCaliburnWay.ViewModels
             get { return "Tekst"; }
             set { }
         }
-
-        public List<TextMethod> TextMethods { get; set; } 
-
-        private TextMethod _selectedTextMethod;
 
         public TextMethod SelectedTextMethod
         {
@@ -69,6 +72,11 @@ namespace StegItCaliburnWay.ViewModels
                 _hiddenMessage = value;
                 NotifyOfPropertyChange(() => HiddenMessage);
             }
+        }
+
+        public void OpenReadDialog()
+        {
+            ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Text);
         }
 
         public byte[] ContainerRawMessage

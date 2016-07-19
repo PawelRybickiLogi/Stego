@@ -5,19 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace StegItCaliburnWay.Logic.Converters
 {
-    class ByteToStringConverter : IValueConverter
+    class ByteToImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)
             {
-                return new string(TextUtils.GetUTF8CharArrayFromByteStream((byte[])value)).Replace("\0", string.Empty);
+                using (var ms = new System.IO.MemoryStream((byte[]) value))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad; 
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    return image;
+                }
             }
 
-            return null;
+            return new BitmapImage();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -23,12 +23,10 @@
             <ColumnDefinition Width="45*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-    
-            <ComboBox x:Name="TextMethods" Grid.Row="0" 
-                  DisplayMemberPath="Name"
-                  SelectedItem="{Binding SelectedTextMethod}"
-                  SelectedIndex="0"
-                  cal:Message.Attach="[Event SelectionChanged]=[Action TextMethodChanged($eventArgs)]" >
+        <ComboBox x:Name="TextMethods" Grid.Row="0" 
+            DisplayMemberPath="Name"
+            SelectedItem="{Binding SelectedTextMethod}"
+            cal:Message.Attach="[Event SelectionChanged]=[Action TextMethodChanged($eventArgs)]" >
         </ComboBox>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="0">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using StegItCaliburnWay.Utils;
 
 namespace StegItCaliburnWay.ViewModels
 {
@@ -36,7 +37,7 @@ namespace StegItCaliburnWay.ViewModels
         {
             try
             {
-                ActiveItem.ContainerRawMessage = _filePickerDialog.OpenReadDialog();
+                ActiveItem.OpenReadDialog();
             }
             catch (Exception e)
             {
@@ -48,7 +49,7 @@ namespace StegItCaliburnWay.ViewModels
         {
             try
             {
-                ActiveItem.MessageToHide = _filePickerDialog.OpenReadDialog();
+                ActiveItem.MessageToHide = _filePickerDialog.OpenReadDialog(DialogType.Text);
             }
             catch (Exception e)
             {

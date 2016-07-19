@@ -1,20 +1,18 @@
 ﻿using System;
 using Microsoft.Win32;
+using Type = StegItCaliburnWay.Utils.Type;
 
 namespace StegItCaliburnWay
 {
     public class FilePickerDialog
     {
-        public byte[] OpenReadDialog()
+        public byte[] OpenReadDialog(Type dialogType)
         {
             var dlg = new OpenFileDialog
             {
-                DefaultExt = ".txt",
-                Filter =
-                    "TXT Files (*.txt)|*.txt|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif"
+                DefaultExt = dialogType.defaultExt,
+                Filter = dialogType.filter
             };
-
-
 
             dlg.ShowDialog();
 
