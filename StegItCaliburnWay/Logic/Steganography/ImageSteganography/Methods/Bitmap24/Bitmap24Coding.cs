@@ -24,16 +24,6 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
             var additionalBits = bitsFromFileToSave.Length % 3;
             var pixelsEdited = 0;
 
-            var bitmapPixel11 = container.GetPixel(0, 0);
-            var bitmapPixel12 = container.GetPixel(1, 0);
-            var bitmapPixel13 = container.GetPixel(2, 0);
-            var bitmapPixel14 = container.GetPixel(0, 1);
-            var bitmapPixel15 = container.GetPixel(1, 1);
-            var bitmapPixel16 = container.GetPixel(2, 1);
-            var bitmapPixel17 = container.GetPixel(0, 2);
-            var bitmapPixel18 = container.GetPixel(1, 2);
-            var bitmapPixel19 = container.GetPixel(2, 2);
-
             for (int i = 0; i < container.Height; i++)
             {
                 if (pixelsEdited >= pixelsToEdit)
@@ -44,10 +34,6 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                     if (pixelsEdited < pixelsToEdit)
                     {
                         var pixelColor = container.GetPixel(i, j);
-
-                        var color = bitsFromFileToSave.Get(0 + pixelsEdited*3);
-                        var color2 = bitsFromFileToSave.Get(1 + pixelsEdited*3);
-                        var coloe3 = bitsFromFileToSave.Get(2 + pixelsEdited*3);
 
                         var pixelColorAfterHidingBits = pixelColor.ReplaceColorPixel(
                             bitsFromFileToSave.Get(0 + pixelsEdited*3),     //RED
@@ -81,16 +67,6 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                     }
                 }
             }
-
-            var bitmapPixel111 = container.GetPixel(0, 0);
-            var bitmapPixel122 = container.GetPixel(1, 0);
-            var bitmapPixel133 = container.GetPixel(2, 0);
-            var bitmapPixel144 = container.GetPixel(0, 1);
-            var bitmapPixel155 = container.GetPixel(1, 1);
-            var bitmapPixel166 = container.GetPixel(2, 1);
-            var bitmapPixel177 = container.GetPixel(0, 2);
-            var bitmapPixel188 = container.GetPixel(1, 2);
-            var bitmapPixel199 = container.GetPixel(2, 2);
 
             return ImageUtils.BitmapToBytes(container);
 
