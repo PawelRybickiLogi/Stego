@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
         private byte[] _hiddenMessage;
+        private Bitmap _containerBitmapMessage;
 
         public List<ImageMethod> ImageMethods { get; set; }
         private ImageMethod _selectedImageMethod;
@@ -73,11 +75,6 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
-        public void OpenReadDialog()
-        {
-            ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Image);
-        }
-
         public byte[] ContainerRawMessage
         {
             get { return _containerRawMessage; }
@@ -88,19 +85,36 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
-        public void Hide()
+        public Bitmap ContainerBitmapMessage
         {
-
+            get { return _containerBitmapMessage; }
+            set
+            {
+                _containerBitmapMessage = value;
+                NotifyOfPropertyChange(() => ContainerBitmapMessage);
+            }
         }
 
-        public void SaveToFile()
+        public void OpenReadDialog()
         {
-            throw new NotImplementedException();
+            ImageFilePicked filePicked = _filePickerDialog.OpenReadImageDialog();
+            ContainerRawMessage = filePicked.Bytes;
+            ContainerBitmapMessage = filePicked.Bitmap;
+        }
+
+        public void Save()
+        {
+            _filePickerDialog.OpenSaveDialog(DialogType.Image, HiddenMessage);
+        }
+
+        public void Hide()
+        {
+            HiddenMessage = _selectedImageMethod.PerformHiding(this);
         }
 
         public void Decode()
         {
-            throw new NotImplementedException();
+            HiddenMessage = _selectedImageMethod.PerformDecoding(this);
         }
     }
 }

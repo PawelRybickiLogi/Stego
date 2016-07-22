@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using Microsoft.Win32;
+using StegItCaliburnWay.Utils;
 using Type = StegItCaliburnWay.Utils.Type;
 
 namespace StegItCaliburnWay
@@ -28,12 +30,34 @@ namespace StegItCaliburnWay
             return bytes;
         }
 
-        public void OpenSaveDialog(byte[] hiddenMessage)
+        public ImageFilePicked OpenReadImageDialog()
+        {
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = DialogType.Image.defaultExt,
+                Filter = DialogType.Image.filter
+            };
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName == "")
+            {
+                throw new ArgumentException();
+            }
+
+            var bitmap = (Bitmap) Image.FromFile(dlg.FileName, true);
+            var bytes = FileReader.ReadFile(dlg.FileName);
+
+            return new ImageFilePicked(bitmap, bytes);
+
+        }
+
+        public void OpenSaveDialog(Type dialogType, byte[] hiddenMessage)
         {
             var dlg = new SaveFileDialog
             {
-                DefaultExt = ".txt",
-                Filter = "TXT Files (*.txt)|*.txt"
+                DefaultExt = dialogType.defaultExt,
+                Filter = dialogType.filter
             };
             
             dlg.ShowDialog();
@@ -43,5 +67,6 @@ namespace StegItCaliburnWay
 
             FileWriter.WriteToFile(dlg.FileName, hiddenMessage);
         }
+
     }
 }

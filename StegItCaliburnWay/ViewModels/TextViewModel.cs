@@ -74,11 +74,6 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
-        public void OpenReadDialog()
-        {
-            ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Text);
-        }
-
         public byte[] ContainerRawMessage
         {
             get { return _containerRawMessage; }
@@ -89,6 +84,17 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+
+        public void OpenReadDialog()
+        {
+            ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Text);
+        }
+
+        public void Save()
+        {
+            _filePickerDialog.OpenSaveDialog(DialogType.Text, HiddenMessage);
+        }
+
         public void Hide()
         {
             HiddenMessage = _selectedTextMethod.PerformHiding(this);
@@ -97,26 +103,6 @@ namespace StegItCaliburnWay.ViewModels
         public void Decode()
         {
             HiddenMessage = _selectedTextMethod.PerformDecoding(this);
-        }
-
-        public void SaveToFile()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void OnActivate()
-        {
-            base.OnActivate();
-        }
-
-        protected override void OnDeactivate(bool close)
-        {
-            base.OnDeactivate(close);
-        }
-
-        public void TextMethodChanged(SelectionChangedEventArgs eventArgs)
-        {
-
         }
     }
 }

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StegItCaliburnWay</RootNamespace>
     <AssemblyName>StegItCaliburnWay</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -58,6 +58,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -81,8 +83,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
+    <Compile Include="Logic\Steganography\CustomBitmap.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap16\Bitmap16Coding.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Coding.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Validator.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Gif\GifCoding.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\Methods\ImageCodingMethod.cs" />
     <Compile Include="Utils\DialogType.cs" />
+    <Compile Include="Utils\ExtenstionMethods.cs" />
     <Compile Include="Utils\FilePickerDialog.cs" />
     <Compile Include="Utils\FileReader.cs" />
     <Compile Include="Utils\FileWriter.cs" />
@@ -92,6 +101,7 @@
     <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCoding.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\TextCodingMethod.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\TextMethod.cs" />
+    <Compile Include="Utils\ImageFilePicked.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -166,6 +176,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

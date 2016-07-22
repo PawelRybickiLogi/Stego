@@ -12,6 +12,7 @@
              ShowIconOnTitleBar="False"
              Height="800" Width="800">
     <controls:MetroWindow.Resources>
+        <converters:ByteToImageConverter x:Key="ByteToImageConverter" />
         <converters:ByteToStringConverter x:Key="ByteToStringConverter" />
     </controls:MetroWindow.Resources>
     <Grid>
@@ -49,7 +50,8 @@
                          cal:Message.Attach="[Event Click]=[Action Hide]"/>
             </Grid>
             <ScrollViewer Grid.Row="1">
-                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToStringConverter}}"  />
+<!--            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"  />-->
+                <Image Source="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"/>
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="3">

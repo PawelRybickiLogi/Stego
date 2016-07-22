@@ -14,7 +14,7 @@ namespace StegItCaliburnWay.Logic.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ImageUtils.GetBitMapFromByteStream((byte[]) value);
+            return ImageUtils.ByteStramToBitmapImage((byte[]) value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

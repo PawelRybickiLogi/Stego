@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 using Caliburn.Micro;
 using StegItCaliburnWay.Utils;
 
@@ -76,7 +77,7 @@ namespace StegItCaliburnWay.ViewModels
 
         public void SaveToFile()
         {
-            _filePickerDialog.OpenSaveDialog(ActiveItem.HiddenMessage);
+            ActiveItem.Save();
         }
     }
 }
