@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using Microsoft.Win32;
 using StegItCaliburnWay.Utils;
 using Type = StegItCaliburnWay.Utils.Type;
@@ -30,12 +32,12 @@ namespace StegItCaliburnWay
             return bytes;
         }
 
-        public ImageFilePicked OpenReadImageDialog()
+        public ImageFile OpenReadImageDialog(Type fileType)
         {
             var dlg = new OpenFileDialog
             {
-                DefaultExt = DialogType.Image.defaultExt,
-                Filter = DialogType.Image.filter
+                DefaultExt = fileType.defaultExt,
+                Filter = fileType.filter
             };
 
             dlg.ShowDialog();
@@ -45,11 +47,35 @@ namespace StegItCaliburnWay
                 throw new ArgumentException();
             }
 
-            var bitmap = (Bitmap) Image.FromFile(dlg.FileName, true);
+            var bitmap = new Bitmap(Image.FromFile(dlg.FileName, true));
             var bytes = FileReader.ReadFile(dlg.FileName);
 
-            return new ImageFilePicked(bitmap, bytes);
+            //var px1 = bitmap.GetPixel(0, 0);
+            var px2 = bitmap.GetPixel(1, 0);
 
+            return new ImageFile(bitmap, bytes);
+        }
+
+        public void OpenSaveImageDialog(Bitmap bitmapImage, Type fileType)
+        {
+            var dlg = new SaveFileDialog
+            {
+                DefaultExt = fileType.defaultExt,
+                Filter = fileType.filter
+            };
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName == "")
+            {
+                throw new ArgumentException();
+            }
+
+            //if (bitmapImage.Is32BitImage())
+            bitmapImage.Save(dlg.FileName);
+            //else
+            //    bitmapImage.SaveAsNot32BitImage(dlg.FileName);
+            //File.WriteAllBytes(dlg.FileName, ImageUtils.BitmapToBytes(bitmapImage));
         }
 
         public void OpenSaveDialog(Type dialogType, byte[] hiddenMessage)

@@ -18,7 +18,8 @@ namespace StegItCaliburnWay.ViewModels
         private readonly FilePickerDialog _filePickerDialog;
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
-        private byte[] _hiddenMessage;
+        private byte[] _hiddenRawMessage;
+        private byte[] _decodedMessage;
 
         public List<TextMethod> TextMethods { get; set; }
         private TextMethod _selectedTextMethod;
@@ -64,13 +65,13 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
-        public byte[] HiddenMessage
+        public byte[] HiddenRawMessage
         {
-            get { return _hiddenMessage; }
+            get { return _hiddenRawMessage; }
             set
             {
-                _hiddenMessage = value;
-                NotifyOfPropertyChange(() => HiddenMessage);
+                _hiddenRawMessage = value;
+                NotifyOfPropertyChange(() => HiddenRawMessage);
             }
         }
 
@@ -84,6 +85,15 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public byte[] DecodedMessage
+        {
+            get { return _decodedMessage; }
+            set
+            {
+                _decodedMessage = value;
+                NotifyOfPropertyChange(() => DecodedMessage);
+            }
+        }
 
         public void OpenReadDialog()
         {
@@ -92,17 +102,17 @@ namespace StegItCaliburnWay.ViewModels
 
         public void Save()
         {
-            _filePickerDialog.OpenSaveDialog(DialogType.Text, HiddenMessage);
+            _filePickerDialog.OpenSaveDialog(DialogType.Text, HiddenRawMessage);
         }
 
         public void Hide()
         {
-            HiddenMessage = _selectedTextMethod.PerformHiding(this);
+            HiddenRawMessage = _selectedTextMethod.PerformHiding(this);
         }
 
         public void Decode()
         {
-            HiddenMessage = _selectedTextMethod.PerformDecoding(this);
+            DecodedMessage = _selectedTextMethod.PerformDecoding(this);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace StegItCaliburnWay.Logic.Converters
         {
             if (value != null)
             {
-                return new string(TextUtils.GetUTF8CharArrayFromByteStream((byte[])value)).Replace("\0", string.Empty);
+                return new string(TextUtils.GetUTF8CharArrayFromByteStream((byte[]) value)).Replace("\0", string.Empty);
             }
 
             return null;

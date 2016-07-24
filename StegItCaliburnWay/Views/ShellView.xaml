@@ -45,13 +45,20 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
                 <Button  Content="Ukryj" HorizontalAlignment="Center" Padding="20, 2, 20, 2" Margin="10,10,10,10" VerticalAlignment="Bottom"
                          cal:Message.Attach="[Event Click]=[Action Hide]"/>
             </Grid>
-            <ScrollViewer Grid.Row="1">
+            <ScrollViewer Grid.Row="1" Grid.Column="0">
 <!--            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"  />-->
-                <Image Source="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"/>
+                <Image Source="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToImageConverter}}"/>
+            </ScrollViewer>
+            <ScrollViewer Grid.Row="1" Grid.Column="1">
+                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.DecodedMessage, Converter={StaticResource ByteToStringConverter}}"  />
             </ScrollViewer>
         </Grid>
         <Grid Grid.Row="3">
@@ -62,7 +69,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
             <Button Grid.Column="1" Content="Wyczyść wszystko" cal:Message.Attach="[Event Click]=[Action Clear]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
-            <Button Grid.Column="2" Content="Dekoduj plik" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="2" Content="Pokaż ukrytą wiadomość" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
         </Grid>
 
     </Grid>

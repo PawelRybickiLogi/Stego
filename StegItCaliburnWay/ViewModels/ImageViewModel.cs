@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Caliburn.Micro;
 using StegItCaliburnWay.Logic.Steganography.ImageSteganography;
 using StegItCaliburnWay.Logic.TextSteganography;
@@ -16,23 +17,25 @@ namespace StegItCaliburnWay.ViewModels
         private readonly FilePickerDialog _filePickerDialog;
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
-        private byte[] _hiddenMessage;
+        private byte[] _hiddenRawMessage;
+        private byte[] _decodedMessage;
         private Bitmap _containerBitmapMessage;
+        private Bitmap _hiddenBitmapMessage;
 
         public List<ImageMethod> ImageMethods { get; set; }
         private ImageMethod _selectedImageMethod;
 
         public ImageViewModel(
             FilePickerDialog filePickerDialog,
-            BitMap24 bitMap24,
-            BitMap16 bitMap16,
+            Png png,
+            BitMap32 bitMap32,
             Gif gif)
         {
             _filePickerDialog = filePickerDialog;
             ImageMethods = new List<ImageMethod>
             {
-                bitMap24,
-                bitMap16,
+                bitMap32,
+                png,
                 gif
             };
 
@@ -65,15 +68,26 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
-        public byte[] HiddenMessage
+        public byte[] HiddenRawMessage
         {
-            get { return _hiddenMessage; }
+            get { return _hiddenRawMessage; }
             set
             {
-                _hiddenMessage = value;
-                NotifyOfPropertyChange(() => HiddenMessage);
+                _hiddenRawMessage = value;
+                NotifyOfPropertyChange(() => HiddenRawMessage);
             }
         }
+
+        public Bitmap HiddenBitmapMessage
+        {
+            get { return _hiddenBitmapMessage; }
+            set
+            {
+                _hiddenBitmapMessage = value;
+                NotifyOfPropertyChange(() => HiddenBitmapMessage);
+            }
+        }
+
 
         public byte[] ContainerRawMessage
         {
@@ -95,26 +109,47 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public byte[] DecodedMessage
+        {
+            get { return _decodedMessage; }
+            set
+            {
+                _decodedMessage = value;
+                NotifyOfPropertyChange(() => DecodedMessage);
+            }
+        }
+
         public void OpenReadDialog()
         {
-            ImageFilePicked filePicked = _filePickerDialog.OpenReadImageDialog();
-            ContainerRawMessage = filePicked.Bytes;
-            ContainerBitmapMessage = filePicked.Bitmap;
+            ImageFile file = _filePickerDialog.OpenReadImageDialog(_selectedImageMethod.dialogType);
+            ContainerRawMessage = file.Bytes;
+            ContainerBitmapMessage = file.Bitmap;
         }
 
         public void Save()
         {
-            _filePickerDialog.OpenSaveDialog(DialogType.Image, HiddenMessage);
+            _filePickerDialog.OpenSaveImageDialog(HiddenBitmapMessage, _selectedImageMethod.dialogType);
         }
 
         public void Hide()
         {
-            HiddenMessage = _selectedImageMethod.PerformHiding(this);
+            try
+            {
+                ImageFile file = _selectedImageMethod.PerformHiding(this);
+                HiddenRawMessage = file.Bytes;
+                HiddenBitmapMessage = file.Bitmap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         public void Decode()
         {
-            HiddenMessage = _selectedImageMethod.PerformDecoding(this);
+            ImageFile file = _selectedImageMethod.PerformDecoding(this);
+            DecodedMessage = file.Bytes;
         }
     }
 }

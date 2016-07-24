@@ -28,10 +28,12 @@ namespace StegItCaliburnWay.ViewModels
 
         public byte[] ContainerRawMessage { get; set; }
         public byte[] MessageToHide { get; set; }
-        public byte[] HiddenMessage { get; set; }
+        public byte[] HiddenRawMessage { get; set; }
+        public byte[] DecodedMessage { get; set; }
+
         public void OpenReadDialog()
         {
-            ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Image);
+            //ContainerRawMessage = _filePickerDialog.OpenReadDialog(DialogType.Image);
         }
 
         public void Hide()

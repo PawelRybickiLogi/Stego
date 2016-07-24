@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace StegItCaliburnWay.Utils
 {
-    public class ImageFilePicked
+    public class ImageFile
     {
         public Bitmap Bitmap;
         public byte[] Bytes;
 
-        public ImageFilePicked(Bitmap bitmap, byte[] bytes)
+        public ImageFile(Bitmap bitmap, byte[] bytes)
         {
             Bitmap = bitmap;
             Bytes = bytes;

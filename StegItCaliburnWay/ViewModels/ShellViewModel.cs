@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Shapes;
 using Caliburn.Micro;
 using StegItCaliburnWay.Utils;
@@ -70,14 +72,26 @@ namespace StegItCaliburnWay.ViewModels
 
         public void Clear()
         {
-            ActiveItem.HiddenMessage = null;
+            ActiveItem.HiddenRawMessage = null;
             ActiveItem.ContainerRawMessage = null;
             ActiveItem.MessageToHide = null;
+            ActiveItem.DecodedMessage = null;
         }
 
         public void SaveToFile()
         {
-            ActiveItem.Save();
+            try
+            {
+                ActiveItem.Save();
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Problem z dostępem do pliku!");
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Nieprawidłowa nazwa pliku");
+            }
         }
     }
 }
