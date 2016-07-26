@@ -15,7 +15,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
         {
             var containerPixelFormat = containerBitmap.PixelFormat;
 
-            if (containerPixelFormat != PixelFormat.Format24bppRgb && containerPixelFormat != PixelFormat.Format32bppArgb)
+            if (containerPixelFormat != PixelFormat.Format24bppRgb && containerPixelFormat != PixelFormat.Format24bppRgb)
                 throw new Exception("Kontener posiada nieprawidłowy format!");
 
             var imageCapacity = containerBitmap.Height * containerBitmap.Width * Bitmap.GetPixelFormatSize(containerBitmap.PixelFormat);

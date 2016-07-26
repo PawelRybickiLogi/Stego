@@ -76,11 +76,6 @@ namespace StegItCaliburnWay.Utils
             return img.PixelFormat == PixelFormat.Format32bppArgb;
         }
 
-        public static bool Is32BitImage(this Image img)
-        {
-            return img.PixelFormat == PixelFormat.Format32bppArgb || img.PixelFormat == PixelFormat.Format32bppRgb;
-        }
-
         public static byte BitsForPixel(this Image img)
         {
             return (byte) (Bitmap.GetPixelFormatSize(img.PixelFormat) / 8);

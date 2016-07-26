@@ -85,6 +85,7 @@
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
     <Compile Include="Logic\Steganography\CustomBitmap.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />
+    <Compile Include="Logic\Steganography\ImageSteganography\LockBitmap.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap32\Bitmap32Coding.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Png\Bitmap24Coding.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Png\Bitmap24Validator.cs" />

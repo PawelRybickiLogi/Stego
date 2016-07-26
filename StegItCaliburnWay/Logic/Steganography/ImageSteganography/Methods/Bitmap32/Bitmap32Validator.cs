@@ -13,9 +13,9 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
     {
         public void CheckIfCanHideMessageOrThrow(Bitmap containerBitmap, BitArray bitsFromFileToSave)
         {
-/*            if (containerBitmap.PixelFormat != PixelFormat.Format32bppArgb && containerBitmap.PixelFormat != PixelFormat.Format32bppRgb)
+            if (containerBitmap.PixelFormat != PixelFormat.Format32bppArgb)
                 throw new Exception("Kontener posiada nieprawidłowy format!");
-            */
+
             var imageCapacity = containerBitmap.Height*containerBitmap.Width*4;
 
             if (bitsFromFileToSave.Length > imageCapacity)

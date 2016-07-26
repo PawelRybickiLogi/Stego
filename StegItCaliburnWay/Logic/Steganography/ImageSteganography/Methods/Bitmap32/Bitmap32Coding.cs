@@ -31,6 +31,17 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
 
             _bitmap32Validator.CheckIfCanHideMessageOrThrow(container, bitsFromFileToSave);
 
+            var px1 = container.GetPixel(0, 0);
+            var px2 = container.GetPixel(1, 0);
+            var px3 = container.GetPixel(2, 0);
+            var px4 = container.GetPixel(0, 1);
+            var px5 = container.GetPixel(1, 1);
+            var px6 = container.GetPixel(2, 1);
+            var px7 = container.GetPixel(0, 2);
+            var px8 = container.GetPixel(1, 2);
+            var px9 = container.GetPixel(2, 2);
+
+
             var containerDeepCopy = container.Clone(new Rectangle(0, 0, container.Width, container.Height), container.PixelFormat);
 
             var pixelsToEdit = bitsFromFileToSave.Length / BITS_FOR_PIXEL;
@@ -68,19 +79,24 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                 }
             }
 
-            var px1 = containerDeepCopy.GetPixel(0, 0);
-            var px2 = containerDeepCopy.GetPixel(1, 0);
-
             return new ImageFile(containerDeepCopy, ImageUtils.BitmapToBytes(containerDeepCopy));
         }
 
         public ImageFile DecodeHiddenMessage(Bitmap hiddenMessageContainer)
         {
-            var px1 = hiddenMessageContainer.GetPixel(0, 0);
-            var px2 = hiddenMessageContainer.GetPixel(1, 0);
-
             var messageBits = new BitArray(hiddenMessageContainer.Width * hiddenMessageContainer.Height * BITS_FOR_PIXEL);
             //var bytesToRead = _bitmapEoFmarker.GetNumberOfBytesToReadFromImage(hiddenMessageContainer);
+
+            var px1 = hiddenMessageContainer.GetPixel(0, 0);
+            var px2 = hiddenMessageContainer.GetPixel(1, 0);
+            var px3 = hiddenMessageContainer.GetPixel(2, 0);
+            var px4 = hiddenMessageContainer.GetPixel(0, 1);
+            var px5 = hiddenMessageContainer.GetPixel(1, 1);
+            var px6 = hiddenMessageContainer.GetPixel(2, 1);
+            var px7 = hiddenMessageContainer.GetPixel(0, 2);
+            var px8 = hiddenMessageContainer.GetPixel(1, 2);
+            var px9 = hiddenMessageContainer.GetPixel(2, 2);
+
 
             var bitInputNumber = 0;
 

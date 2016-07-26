@@ -47,11 +47,8 @@ namespace StegItCaliburnWay
                 throw new ArgumentException();
             }
 
-            var bitmap = new Bitmap(Image.FromFile(dlg.FileName, true));
+            var bitmap = (Bitmap) Image.FromFile(dlg.FileName, true);
             var bytes = FileReader.ReadFile(dlg.FileName);
-
-            //var px1 = bitmap.GetPixel(0, 0);
-            var px2 = bitmap.GetPixel(1, 0);
 
             return new ImageFile(bitmap, bytes);
         }
@@ -71,11 +68,10 @@ namespace StegItCaliburnWay
                 throw new ArgumentException();
             }
 
-            //if (bitmapImage.Is32BitImage())
-            bitmapImage.Save(dlg.FileName);
-            //else
-            //    bitmapImage.SaveAsNot32BitImage(dlg.FileName);
-            //File.WriteAllBytes(dlg.FileName, ImageUtils.BitmapToBytes(bitmapImage));
+            if (bitmapImage.HasAlphaChannel())
+                bitmapImage.Save(dlg.FileName);
+            else
+                bitmapImage.SaveAsNot32BitImage(dlg.FileName);
         }
 
         public void OpenSaveDialog(Type dialogType, byte[] hiddenMessage)

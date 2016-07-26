@@ -24,19 +24,16 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
     public class Png : ImageMethod
     {
         private readonly Bitmap24Coding _bitmap24Coding;
-        private readonly Bitmap32Coding _bitmap32Coding;
 
         public Png(
-            Bitmap24Coding bitmap24Coding,
-            Bitmap32Coding bitmap32Coding)
+            Bitmap24Coding bitmap24Coding)
         {
             _bitmap24Coding = bitmap24Coding;
-            _bitmap32Coding = bitmap32Coding;
         }
 
         public override string Name
         {
-            get { return "24/32 bit PNG"; }
+            get { return "24-bit/32-bit no alpha PNG/BMP"; }
         }
 
         public override Type dialogType
@@ -46,21 +43,11 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
 
         public override ImageFile PerformHiding(ImageViewModel imageViewModel)
         {
-            if (imageViewModel.ContainerBitmapMessage.HasAlphaChannel())
-            {
-                return _bitmap32Coding.CreateHiddenMessage(imageViewModel.ContainerBitmapMessage, imageViewModel.MessageToHide);
-            }
-
             return _bitmap24Coding.CreateHiddenMessage(imageViewModel.ContainerBitmapMessage, imageViewModel.MessageToHide);
         }
 
         public override ImageFile PerformDecoding(ImageViewModel imageViewModel)
         {
-            if (imageViewModel.ContainerBitmapMessage.HasAlphaChannel())
-            {
-                return _bitmap32Coding.DecodeHiddenMessage(imageViewModel.ContainerBitmapMessage);
-            }
-
             return _bitmap24Coding.DecodeHiddenMessage(imageViewModel.ContainerBitmapMessage);
         }
     }
@@ -68,19 +55,16 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
     public class BitMap32 : ImageMethod
     {
         private readonly Bitmap32Coding _bitmap32Coding;
-        private readonly Bitmap24Coding _bitmap24Coding;
 
         public BitMap32(
-            Bitmap32Coding bitmap32Coding,
-            Bitmap24Coding bitmap24Coding)
+            Bitmap32Coding bitmap32Coding)
         {
             _bitmap32Coding = bitmap32Coding;
-            _bitmap24Coding = bitmap24Coding;
         }
 
         public override string Name
         {
-            get { return "32 bit Bitmap"; }
+            get { return "32-bit alpha PNG/BMP"; }
         }
 
         public override Type dialogType
