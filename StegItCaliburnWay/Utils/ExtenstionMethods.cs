@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -91,6 +92,37 @@ namespace StegItCaliburnWay.Utils
             var bytes = (byte[])imgCon.ConvertTo(bmp, typeof(byte[]));
             File.WriteAllBytes(fname, bytes);
         }
+
+        public static BitArray GetBitArrayFromBitArrayRange(this BitArray bitArray, int startIndex, int bitsToTake)
+        {
+            if (startIndex > bitArray.Length - bitsToTake)
+                throw new Exception("wrong index value");
+
+            BitArray tmpBits = new BitArray(bitsToTake);
+
+            int counter = 0;
+            for (int i = startIndex; counter < bitsToTake; i++)
+            {
+                tmpBits[counter] = bitArray.Get(i);
+                counter++;
+            }
+
+            return tmpBits;
+        }
+
+        public static byte[] ToByteArray(this BitArray bits)
+        {
+            if (bits.Count % 8 != 0)
+            {
+                throw new ArgumentException("bits");
+            }
+
+
+            byte[] bytes = new byte[bits.Length / 8];
+            bits.CopyTo(bytes, 0);
+            return bytes;
+        }
+   
    
     }
 }

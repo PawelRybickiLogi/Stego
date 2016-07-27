@@ -94,6 +94,10 @@
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\BitmapEOFmarker.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Gif\GifCoding.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\ImageCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CodingSign.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CustomCoding.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\SettingsFrameFromContent.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\ValueType.cs" />
     <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\ExtenstionMethods.cs" />
     <Compile Include="Utils\FilePickerDialog.cs" />

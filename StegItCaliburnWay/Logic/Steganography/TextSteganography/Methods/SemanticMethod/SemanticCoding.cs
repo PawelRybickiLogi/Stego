@@ -11,7 +11,7 @@ namespace StegIt.Text.StegoTools
 {
     public class SemanticCoding : ITextCodingMethod
     {
-        private Dictionary<char, char> listOfLettersThatCanBeChanged = SemanticLettersValues.GetLetters();
+        private readonly Dictionary<char, char> listOfLettersThatCanBeChanged = SemanticLettersValues.GetLetters();
 
         public byte[] CreateHiddenMessage(byte[] container, byte[] message)
         {

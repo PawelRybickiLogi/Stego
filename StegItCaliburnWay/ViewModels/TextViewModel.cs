@@ -27,13 +27,15 @@ namespace StegItCaliburnWay.ViewModels
         public TextViewModel(
             SemanticCodingMethod semanticCodingMethod,
             WhiteSpaceCodingMethod whiteSpaceCodingMethod,
+            CustomCodingMethod customCodingMethod,
             FilePickerDialog filePickerDialog)
         {
             _filePickerDialog = filePickerDialog;
             TextMethods = new List<TextMethod>
             {
                 semanticCodingMethod,
-                whiteSpaceCodingMethod
+                whiteSpaceCodingMethod,
+                customCodingMethod
             };
 
             SelectedTextMethod = TextMethods[0];

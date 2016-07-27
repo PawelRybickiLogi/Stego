@@ -15,7 +15,6 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
     public abstract class ImageMethod
     {
         public abstract string Name { get; }
-
         public abstract Type dialogType { get; }
         public abstract ImageFile PerformDecoding(ImageViewModel imageViewModel);
         public abstract ImageFile PerformHiding(ImageViewModel imageViewModel);

@@ -55,8 +55,8 @@
                          IsEnabled="{Binding ShouldEnableHide}"/>
             </Grid>
             <ScrollViewer Grid.Row="1" Grid.Column="0">
-<!--            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"  />-->
-                <Image Source="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToImageConverter}}"/>
+                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"  />
+                <!--                <Image Source="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToImageConverter}}"/>-->
             </ScrollViewer>
             <ScrollViewer Grid.Row="1" Grid.Column="1">
                 <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.DecodedMessage, Converter={StaticResource ByteToStringConverter}}"  />
