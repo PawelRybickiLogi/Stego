@@ -46,6 +46,8 @@ namespace StegItCaliburnWay.ViewModels
             {
                 Console.WriteLine(e);
             }
+
+            updateUI();
         }
 
         public void ReadMessageToHide()
@@ -58,6 +60,8 @@ namespace StegItCaliburnWay.ViewModels
             {
                 Console.WriteLine(e);
             }
+
+            updateUI();
         }
 
         public void Hide()
@@ -76,6 +80,8 @@ namespace StegItCaliburnWay.ViewModels
             ActiveItem.ContainerRawMessage = null;
             ActiveItem.MessageToHide = null;
             ActiveItem.DecodedMessage = null;
+
+            updateUI();
         }
 
         public void SaveToFile()
@@ -92,6 +98,28 @@ namespace StegItCaliburnWay.ViewModels
             {
                 MessageBox.Show("Nieprawidłowa nazwa pliku");
             }
+        }
+
+        public bool ShouldEnableHide
+        {
+            get { return ActiveItem.ContainerRawMessage != null && ActiveItem.MessageToHide != null; }
+        }
+
+        public bool ShouldEnableSaveToFileFile
+        {
+            get { return ActiveItem.HiddenRawMessage != null; }
+        }
+
+        public bool ShouldEnableShowHiddenMessage
+        {
+            get { return ActiveItem.ContainerRawMessage != null; }
+        }
+
+        private void updateUI()
+        {
+            NotifyOfPropertyChange(() => ShouldEnableHide);
+            NotifyOfPropertyChange(() => ShouldEnableSaveToFileFile);
+            NotifyOfPropertyChange(() => ShouldEnableShowHiddenMessage);
         }
     }
 }

@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
     <Compile Include="Logic\Steganography\CustomBitmap.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />

@@ -51,7 +51,8 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.ColumnSpan="2">
                 <Button  Content="Ukryj" HorizontalAlignment="Center" Padding="20, 2, 20, 2" Margin="10,10,10,10" VerticalAlignment="Bottom"
-                         cal:Message.Attach="[Event Click]=[Action Hide]"/>
+                         cal:Message.Attach="[Event Click]=[Action Hide]"
+                         IsEnabled="{Binding ShouldEnableHide}"/>
             </Grid>
             <ScrollViewer Grid.Row="1" Grid.Column="0">
 <!--            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenMessage, Converter={StaticResource ByteToImageConverter}}"  />-->
@@ -67,9 +68,9 @@
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="0" IsEnabled="{Binding ShouldEnableSaveToFileFile}" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
             <Button Grid.Column="1" Content="Wyczyść wszystko" cal:Message.Attach="[Event Click]=[Action Clear]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
-            <Button Grid.Column="2" Content="Pokaż ukrytą wiadomość" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="2" IsEnabled="{Binding ShouldEnableShowHiddenMessage}" Content="Pokaż ukrytą wiadomość" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
         </Grid>
 
     </Grid>
