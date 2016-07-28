@@ -32,6 +32,8 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
 
         public SettingsFrameFromContent(byte[] content)
         {
+            char[] contentcik = TextUtils.GetUTF8CharArrayFromByteStream(content);
+
             BitArray contentSettingsBits = content.GetSettingsFrame();
 
             var jumpBits = contentSettingsBits.GetBitArrayFromBitArrayRange(0, 12);
@@ -41,8 +43,11 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
             ReturnValueType = GetValueType(flags.Get(0));
             Coding = GetCodingSign(flags.Get(1));
 
-            Shift = contentSettingsBits.GetBitArrayFromBitArrayRange(16, 16).GetIntFromBitArray();
-            MessageLength = contentSettingsBits.GetBitArrayFromBitArrayRange(32, 32).GetIntFromBitArray(); ;
+            var shiftBits = contentSettingsBits.GetBitArrayFromBitArrayRange(16, 16);
+            Shift = shiftBits.GetIntFromBitArray();
+
+            var lengthBits = contentSettingsBits.GetBitArrayFromBitArrayRange(32, 32);
+            MessageLength = lengthBits.GetIntFromBitArray(); ;
         }
 
         private char GetCodingSign(bool flagValue)

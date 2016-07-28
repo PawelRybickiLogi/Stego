@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 using StegItCaliburnWay;
+using StegItCaliburnWay.Utils;
 
 namespace StegIt.Text.StegoTools
 {
@@ -52,7 +53,7 @@ namespace StegIt.Text.StegoTools
 
             var spacesIndex = GetSpacesPosition(openedFile);
 
-            var numberOfPositiveBits = bitsFromFileToSave.Cast<object>().Count(bit => bit.Equals(true));
+            var numberOfPositiveBits = bitsFromFileToSave.GetPositiveBitsCount();
 
             var outputFileLength = openedFile.Length + numberOfPositiveBits;
 
@@ -103,11 +104,7 @@ namespace StegIt.Text.StegoTools
                 shouldReadOneBit = openedFile[i] == SPACE;
             }
 
-            var messageBytes = new byte[messageBits.Count];
-            messageBits.CopyTo(messageBytes, 0);
-
-            return messageBytes;
-            //return Encoding.UTF8.GetString(messageBytes).ToCharArray();
+            return messageBits.ToByteArray();
         }
     }
 }

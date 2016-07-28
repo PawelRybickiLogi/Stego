@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.CustomMethod;
@@ -182,12 +183,14 @@ namespace StegItCaliburnWay.Utils
             BitArray settingsBits = new BitArray(64);
             var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
 
+            var insertedBits = 0;
+
             for (int i = 0; i < 64; i++)
             {
-                if (chars[i] == CodingSign.SPACE || chars[i] == CodingSign.JOINER)
+                if (chars[i + insertedBits] == CodingSign.SPACE)
                 {
                     settingsBits.Set(i, true);
-                    i++;
+                    insertedBits++;
                 }
                 else
                 {
@@ -197,7 +200,18 @@ namespace StegItCaliburnWay.Utils
 
             return settingsBits;
         }
-   
- 
+
+        public static int GetPositiveBitsCount(this BitArray array)
+        {
+            return array.Cast<object>().Count(bit => bit.Equals(true));
+        }
+
+        public static byte[] ToBytes(this BitArray array)
+        {
+            var messageBytes = new byte[array.Count];
+            array.CopyTo(messageBytes, 0);
+
+            return messageBytes;
+        }
     }
 }
