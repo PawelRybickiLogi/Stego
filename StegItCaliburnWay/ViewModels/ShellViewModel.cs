@@ -47,7 +47,7 @@ namespace StegItCaliburnWay.ViewModels
                 Console.WriteLine(e);
             }
 
-            updateUI();
+            UpdateUI();
         }
 
         public void ReadMessageToHide()
@@ -61,12 +61,13 @@ namespace StegItCaliburnWay.ViewModels
                 Console.WriteLine(e);
             }
 
-            updateUI();
+            UpdateUI();
         }
 
         public void Hide()
         {
             ActiveItem.Hide();
+            UpdateUI();
         }
 
         public void Decode()
@@ -81,7 +82,7 @@ namespace StegItCaliburnWay.ViewModels
             ActiveItem.MessageToHide = null;
             ActiveItem.DecodedMessage = null;
 
-            updateUI();
+            UpdateUI();
         }
 
         public void SaveToFile()
@@ -115,7 +116,7 @@ namespace StegItCaliburnWay.ViewModels
             get { return ActiveItem.ContainerRawMessage != null; }
         }
 
-        private void updateUI()
+        private void UpdateUI()
         {
             NotifyOfPropertyChange(() => ShouldEnableHide);
             NotifyOfPropertyChange(() => ShouldEnableSaveToFileFile);

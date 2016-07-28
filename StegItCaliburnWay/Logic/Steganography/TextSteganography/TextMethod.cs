@@ -89,7 +89,7 @@ namespace StegItCaliburnWay.Logic.TextSteganography
         public override byte[] PerformHiding(TextViewModel textViewModel)
         {
 
-            var bits = new BitArray(64);
+/*            var bits = new BitArray(64);
             bits.Set(0, true);
             bits.Set(1, false);
             bits.Set(2, false);
@@ -166,9 +166,9 @@ namespace StegItCaliburnWay.Logic.TextSteganography
             bits.Set(60, false);
             bits.Set(61, true);
             bits.Set(62, false);
-            bits.Set(63, false);
+            bits.Set(63, false);*/
 
-            return _customCoding.CreateHiddenMessage(bits.ToByteArray(), textViewModel.MessageToHide);
+            return _customCoding.CreateHiddenMessage(textViewModel.ContainerRawMessage, textViewModel.MessageToHide);
         }
 
         public override byte[] PerformDecoding(TextViewModel textViewModel)

@@ -96,6 +96,7 @@
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\ImageCodingMethod.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CodingSign.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CustomCoding.cs" />
+    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CustomCodingValidator.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\SettingsFrameFromContent.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\ValueType.cs" />
     <Compile Include="Utils\DialogType.cs" />
