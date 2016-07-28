@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using StegItCaliburnWay.Utils;
 
 namespace StegItCaliburnWay.ViewModels
 {
-    public class ThirdViewModel : Screen, IStegenographyMethodViewModel
+    public class SoundViewModel : Screen, IStegenographyMethodViewModel
     {
         private readonly FilePickerDialog _filePickerDialog;
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
         private byte[] _hiddenMessage;
 
-        public ThirdViewModel(FilePickerDialog filePickerDialog)
+        public SoundViewModel(FilePickerDialog filePickerDialog)
         {
             _filePickerDialog = filePickerDialog;
         }
 
         public override string DisplayName
         {
-            get { return "Trzecia metoda"; }
+            get { return "Dźwięk"; }
             set { }
         }
 

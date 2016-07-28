@@ -6,17 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 using StegItCaliburnWay;
+using StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.SpaceCoding;
 using StegItCaliburnWay.Utils;
 
 namespace StegIt.Text.StegoTools
 {
     public class SpaceCoding : ITextCodingMethod
     {
+        private readonly SpaceCodingValidator _spaceCodingValidator;
         private const char SPACE = ' ';
 
-        public static int GetSpacesCount(char[] message)
+        public SpaceCoding(SpaceCodingValidator spaceCodingValidator)
         {
-            return message.Count(m => m == SPACE);
+            _spaceCodingValidator = spaceCodingValidator;
         }
 
         public static ArrayList GetSpacesPosition(char[] message)
@@ -38,33 +40,30 @@ namespace StegIt.Text.StegoTools
 
         public byte[] CreateHiddenMessage(byte[] container, byte[] messageBytes)
         {
-            var message = TextUtils.GetUTF8CharArrayFromByteStream(messageBytes);
+            var messageToHide = TextUtils.GetUTF8CharArrayFromByteStream(messageBytes);
 
-            var openedFile = TextUtils.GetUTF8CharArrayFromByteStream(container);
+            var containerText = TextUtils.GetUTF8CharArrayFromByteStream(container);
 
-            var fileToSaveBytes = Encoding.UTF8.GetBytes(message);
+            _spaceCodingValidator.CheckIfCanHideMessageOrThrow(containerText, messageBytes);
+
+            var fileToSaveBytes = Encoding.UTF8.GetBytes(messageToHide);
 
             var bitsFromFileToSave = TextUtils.GetMessageBitArray(fileToSaveBytes);
 
-            if (GetSpacesCount(openedFile) < bitsFromFileToSave.Length)
-            {
-                throw new ArgumentException();
-            }
-
-            var spacesIndex = GetSpacesPosition(openedFile);
+            var spacesIndex = GetSpacesPosition(containerText);
 
             var numberOfPositiveBits = bitsFromFileToSave.GetPositiveBitsCount();
 
-            var outputFileLength = openedFile.Length + numberOfPositiveBits;
+            var outputFileLength = containerText.Length + numberOfPositiveBits;
 
             var hiddenMessage = new char[outputFileLength];
 
             var insertedSpaces = 0;
             var insertedHiddenBits = 0;
 
-            for (var i = 0; i < openedFile.Length; i++)
+            for (var i = 0; i < containerText.Length; i++)
             {
-                hiddenMessage[i + insertedSpaces] = openedFile[i];
+                hiddenMessage[i + insertedSpaces] = containerText[i];
 
                 if (spacesIndex.Contains(i) && insertedHiddenBits < bitsFromFileToSave.Length)
                 {
@@ -84,9 +83,7 @@ namespace StegIt.Text.StegoTools
         {
             var openedFile = TextUtils.GetUTF8CharArrayFromByteStream(container);
 
-            var spacesCount = GetSpacesCount(openedFile);
-
-            var messageBits = new BitArray(spacesCount);
+            var messageBits = new BitArray(openedFile.SpaceCount());
 
             var shouldReadOneBit = false;
             var numberOfBitToPut = 0;

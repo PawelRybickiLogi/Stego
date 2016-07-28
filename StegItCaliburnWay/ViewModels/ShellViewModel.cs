@@ -25,14 +25,15 @@ namespace StegItCaliburnWay.ViewModels
         public ShellViewModel(
             ImageViewModel imageViewModel,
             TextViewModel textViewModel,
-            ThirdViewModel thirdViewModel,
+            VideoViewModel videoViewModel,
+            SoundViewModel soundViewModel,
             FilePickerDialog filePickerDialog)
         {
             _filePickerDialog = filePickerDialog;
             
             Items.AddRange(new IStegenographyMethodViewModel[]
             {
-                textViewModel, imageViewModel, thirdViewModel
+                textViewModel, imageViewModel, videoViewModel, soundViewModel
             });
         }
 
@@ -58,7 +59,7 @@ namespace StegItCaliburnWay.ViewModels
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MessageBox.Show(e.Message);
             }
 
             UpdateUI();
@@ -66,13 +67,30 @@ namespace StegItCaliburnWay.ViewModels
 
         public void Hide()
         {
-            ActiveItem.Hide();
+            try
+            {
+                ActiveItem.Hide();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             UpdateUI();
         }
 
         public void Decode()
         {
-            ActiveItem.Decode();
+            try
+            {
+                ActiveItem.Decode();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            UpdateUI();
         }
 
         public void Clear()

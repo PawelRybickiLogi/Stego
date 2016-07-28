@@ -10,28 +10,6 @@ namespace StegItCaliburnWay
 {
     public class FilePickerDialog
     {
-        public byte[] OpenReadDialog(Type dialogType)
-        {
-            var dlg = new OpenFileDialog
-            {
-                DefaultExt = dialogType.defaultExt,
-                Filter = dialogType.filter
-            };
-
-            dlg.ShowDialog();
-
-            if (dlg.FileName == "")
-            {
-                throw new ArgumentException();
-            }
-
-            var bytes = FileReader.ReadFile(dlg.FileName);
-
-            //var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
-
-            return bytes;
-        }
-
         public ImageFile OpenReadImageDialog(Type fileType)
         {
             var dlg = new OpenFileDialog
@@ -74,6 +52,28 @@ namespace StegItCaliburnWay
                 bitmapImage.SaveAsNot32BitImage(dlg.FileName);
         }
 
+        public byte[] OpenReadDialog(Type dialogType)
+        {
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = dialogType.defaultExt,
+                Filter = dialogType.filter
+            };
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName == "")
+            {
+                throw new ArgumentException();
+            }
+
+            var bytes = FileReader.ReadFile(dlg.FileName);
+
+            //var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
+
+            return bytes;
+        }
+
         public void OpenSaveDialog(Type dialogType, byte[] hiddenMessage)
         {
             var dlg = new SaveFileDialog
@@ -89,6 +89,5 @@ namespace StegItCaliburnWay
 
             FileWriter.WriteToFile(dlg.FileName, hiddenMessage);
         }
-
     }
 }

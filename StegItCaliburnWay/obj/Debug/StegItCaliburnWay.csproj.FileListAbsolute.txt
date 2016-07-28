@@ -40,7 +40,6 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ImageView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ShellView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\TextView.g.cs
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ThirdView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\App.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay_MarkupCompile.cache
@@ -64,7 +63,10 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Dictionary1.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ImageView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ShellView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\TextView.baml
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ThirdView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.g.resources
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.Properties.Resources.resources
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.csproj.GenerateResource.Cache
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\SoundView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\SoundView.baml

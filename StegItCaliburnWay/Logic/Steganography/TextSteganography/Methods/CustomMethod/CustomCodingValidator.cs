@@ -15,10 +15,10 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
 
             var requiredSpaceToWriteMsg = settings.Shift + settings.MessageLength * (settings.JumpValue + 1);
 
-/*            if (container.Length < HEADER_SIZE + requiredSpaceToWriteMsg)
+            if (container.Length < HEADER_SIZE + requiredSpaceToWriteMsg)
                 throw new Exception("Wiadomość jest zbyt długa aby umieścić ją w tekście" + Environment.NewLine +
                                     "Długość wiadomości w bitach: " + HEADER_SIZE + " (ramka ustawień), " + requiredSpaceToWriteMsg + " (wymagane miejsce na wiadomość)" + Environment.NewLine +
-                                    "Ilośc dostępnego miejsca w tekście: " + container.Length);*/
+                                    "Ilośc dostępnego miejsca w tekście: " + container.Length);
         }
 
         public void CheckIfCanDecodeMessageOrThrow(byte[] container)

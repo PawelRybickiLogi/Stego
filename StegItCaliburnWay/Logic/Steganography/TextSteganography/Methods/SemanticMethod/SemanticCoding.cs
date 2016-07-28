@@ -6,16 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using StegIt.Text.StegoTools.SemanticMethod;
 using StegItCaliburnWay;
+using StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.SemanticMethod;
 
 namespace StegIt.Text.StegoTools
 {
     public class SemanticCoding : ITextCodingMethod
     {
+        private readonly SemanticCodingValidator _semanticCodingValidator;
         private readonly Dictionary<char, char> listOfLettersThatCanBeChanged = SemanticLettersValues.GetLetters();
+
+        public SemanticCoding(SemanticCodingValidator semanticCodingValidator)
+        {
+            _semanticCodingValidator = semanticCodingValidator;
+        }
 
         public byte[] CreateHiddenMessage(byte[] container, byte[] message)
         {
             var openedFile = TextUtils.GetUTF8CharArrayFromByteStream(container);
+
+            _semanticCodingValidator.CheckIfCanHideMessageOrThrow(openedFile, message);
 
             var fileToSaveBytes = message;
 

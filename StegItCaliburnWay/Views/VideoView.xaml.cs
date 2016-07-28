@@ -18,9 +18,9 @@ namespace StegItCaliburnWay.Views
     /// <summary>
     /// Interaction logic for ThirdView.xaml
     /// </summary>
-    public partial class ThirdView : UserControl
+    public partial class VideoView : UserControl
     {
-        public ThirdView()
+        public VideoView()
         {
             InitializeComponent();
         }

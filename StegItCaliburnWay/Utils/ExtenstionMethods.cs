@@ -213,5 +213,17 @@ namespace StegItCaliburnWay.Utils
 
             return messageBytes;
         }
+
+        public static int SpaceCount(this char[] array)
+        {
+            const char SPACE = ' ';
+
+            if (array != null)
+            {
+                return array.Count(m => m == SPACE);
+            }
+
+            return 0;
+        }
     }
 }
