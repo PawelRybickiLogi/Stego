@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Drawing;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 
 namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap24
 {
@@ -73,6 +74,8 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                     }
                 }
             }
+
+
 
             return new ImageFile(containerDeepCopy, ImageUtils.BitmapToBytes(containerDeepCopy));
         }

@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using Microsoft.Win32;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 using Type = StegItCaliburnWay.Utils.Type;
 
 namespace StegItCaliburnWay
@@ -42,9 +43,7 @@ namespace StegItCaliburnWay
             dlg.ShowDialog();
 
             if (dlg.FileName == "")
-            {
-                throw new ArgumentException();
-            }
+                return;
 
             if (bitmapImage.HasAlphaChannel() || bitmapImage.IsIndextedImage())
                 bitmapImage.Save(dlg.FileName);
@@ -63,13 +62,9 @@ namespace StegItCaliburnWay
             dlg.ShowDialog();
 
             if (dlg.FileName == "")
-            {
-                throw new ArgumentException();
-            }
+                return null;
 
             var bytes = FileReader.ReadFile(dlg.FileName);
-
-            //var chars = TextUtils.GetUTF8CharArrayFromByteStream(bytes);
 
             return bytes;
         }

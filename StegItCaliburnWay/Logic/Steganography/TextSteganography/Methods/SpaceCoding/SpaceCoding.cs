@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using StegItCaliburnWay;
 using StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.SpaceCoding;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 
 namespace StegIt.Text.StegoTools
 {

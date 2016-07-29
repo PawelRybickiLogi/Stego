@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StegIt.Text.StegoTools;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 
 namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.CustomMethod
 {

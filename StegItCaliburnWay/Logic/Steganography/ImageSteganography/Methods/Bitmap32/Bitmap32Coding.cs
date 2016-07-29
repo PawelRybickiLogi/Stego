@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Drawing;
+using System.Drawing.Imaging;
 using StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap32;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 
 namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap24
 {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using StegItCaliburnWay.Properties;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Utils.ExtensionsMethods;
 
 namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Gif
 {

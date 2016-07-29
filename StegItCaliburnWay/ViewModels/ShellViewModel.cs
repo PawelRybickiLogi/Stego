@@ -33,11 +33,10 @@ namespace StegItCaliburnWay.ViewModels
             
             Items.AddRange(new IStegenographyMethodViewModel[]
             {
-                textViewModel, imageViewModel, videoViewModel, soundViewModel
+                textViewModel, imageViewModel, soundViewModel, videoViewModel
             });
 
         }
-
 
         public void ReadContainer()
         {
@@ -45,7 +44,10 @@ namespace StegItCaliburnWay.ViewModels
             {
                 ActiveItem.OpenReadDialog();
             }
-            catch (ArgumentException e) { }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             UpdateUI();
         }
@@ -54,9 +56,15 @@ namespace StegItCaliburnWay.ViewModels
         {
             try
             {
-                ActiveItem.MessageToHide = _filePickerDialog.OpenReadDialog(DialogType.Text);
+                var message = _filePickerDialog.OpenReadDialog(DialogType.Text);
+
+                if (message != null)
+                    ActiveItem.MessageToHide = message;
             }
-            catch (ArgumentException e) { }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             UpdateUI();
         }
