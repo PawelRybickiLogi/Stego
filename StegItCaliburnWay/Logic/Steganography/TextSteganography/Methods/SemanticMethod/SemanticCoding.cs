@@ -30,17 +30,13 @@ namespace StegIt.Text.StegoTools
 
             var bitsFromFileToSave = TextUtils.GetMessageBitArray(fileToSaveBytes);
 
-            if (openedFile.Length < bitsFromFileToSave.Length)
-            {
-                throw new ArgumentException();
-            }
-
             var messageChars = new char[openedFile.Length];
             var insertedHiddenBits = 0;
 
             for (var i = 0; i < openedFile.Length; i++)
             {
-                if (listOfLettersThatCanBeChanged.ContainsKey(openedFile[i]) && insertedHiddenBits < bitsFromFileToSave.Length)
+                if (listOfLettersThatCanBeChanged.ContainsKey(openedFile[i]) &&
+                    insertedHiddenBits < bitsFromFileToSave.Length)
                 {
                     if (bitsFromFileToSave.Get(insertedHiddenBits))
                     {
@@ -72,7 +68,8 @@ namespace StegIt.Text.StegoTools
 
             foreach (char letter in openedFile)
             {
-                if (listOfLettersThatCanBeChanged.ContainsKey(letter) || listOfLettersThatCanBeChanged.ContainsValue(letter))
+                if (listOfLettersThatCanBeChanged.ContainsKey(letter) ||
+                    listOfLettersThatCanBeChanged.ContainsValue(letter))
                 {
                     messageBits.Set(bitInputNumber, listOfLettersThatCanBeChanged.ContainsValue(letter));
                     bitInputNumber++;
@@ -87,21 +84,9 @@ namespace StegIt.Text.StegoTools
 
         private int GetNumberOfLettersThatCouldBeHidden(char[] openedFile)
         {
-            return openedFile.Count(c => listOfLettersThatCanBeChanged.ContainsKey(c) || listOfLettersThatCanBeChanged.ContainsValue(c));
+            return
+                openedFile.Count(
+                    c => listOfLettersThatCanBeChanged.ContainsKey(c) || listOfLettersThatCanBeChanged.ContainsValue(c));
         }
     }
-
-
-    internal class Letter
-    {
-        public char originalLetter;
-        public char modifiedLetter;
-
-        public Letter(char originalLetter, char modifiedLetter)
-        {
-            this.originalLetter = originalLetter;
-            this.modifiedLetter = modifiedLetter;
-        }
-    }
-
 }

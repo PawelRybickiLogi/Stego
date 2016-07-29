@@ -20,14 +20,14 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
         {
             bitsForPixel = 3;
 
-            var bitsFromFileToSave = TextUtils.GetMessageBitArray(message);
+            var bitsFromMessageToSave = TextUtils.GetMessageBitArray(message);
 
-            _bitmap24Validator.CheckIfCanHideMessageOrThrow(container, bitsFromFileToSave);
+            _bitmap24Validator.CheckIfCanHideMessageOrThrow(container, bitsFromMessageToSave);
 
             var containerDeepCopy = container.Clone(new Rectangle(0, 0, container.Width, container.Height), container.PixelFormat);
 
-            var pixelsToEdit = bitsFromFileToSave.Length / bitsForPixel;
-            var additionalBits = bitsFromFileToSave.Length % bitsForPixel;
+            var pixelsToEdit = bitsFromMessageToSave.Length / bitsForPixel;
+            var additionalBits = bitsFromMessageToSave.Length % bitsForPixel;
             var pixelsEdited = 0;
 
             for (int i = 0; i < containerDeepCopy.Height; i++)
@@ -42,9 +42,9 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                         var pixelColor = containerDeepCopy.GetPixel(j, i);
 
                         var pixelColorAfterHidingBits = pixelColor.ReplaceColorPixel(
-                            bitsFromFileToSave.Get(0 + pixelsEdited * bitsForPixel),     //RED
-                            bitsFromFileToSave.Get(1 + pixelsEdited * bitsForPixel),     //GREEN
-                            bitsFromFileToSave.Get(2 + pixelsEdited * bitsForPixel));    //BLUE
+                            bitsFromMessageToSave.Get(0 + pixelsEdited * bitsForPixel),     //RED
+                            bitsFromMessageToSave.Get(1 + pixelsEdited * bitsForPixel),     //GREEN
+                            bitsFromMessageToSave.Get(2 + pixelsEdited * bitsForPixel));    //BLUE
 
                         containerDeepCopy.SetPixel(j, i, pixelColorAfterHidingBits);
 
@@ -56,7 +56,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                         {
                             var pixelColor = containerDeepCopy.GetPixel(j, i);
                             var pixelColorAfterChangingOneBit = 
-                                pixelColor.Replace1ColorBit(bitsFromFileToSave.Get(bitsFromFileToSave.Length - 1));
+                                pixelColor.Replace1ColorBit(bitsFromMessageToSave.Get(bitsFromMessageToSave.Length - 1));
 
                             containerDeepCopy.SetPixel(j, i, pixelColorAfterChangingOneBit);
 
@@ -66,7 +66,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitma
                         {
                             var pixelColor = containerDeepCopy.GetPixel(j, i);
                             var pixelColorAfterChangingTwoBits =
-                                pixelColor.Replace2ColorBits(bitsFromFileToSave.Get(bitsFromFileToSave.Length - 2), bitsFromFileToSave.Get(bitsFromFileToSave.Length - 1));
+                                pixelColor.Replace2ColorBits(bitsFromMessageToSave.Get(bitsFromMessageToSave.Length - 2), bitsFromMessageToSave.Get(bitsFromMessageToSave.Length - 1));
 
                             containerDeepCopy.SetPixel(j, i, pixelColorAfterChangingTwoBits);
                         }

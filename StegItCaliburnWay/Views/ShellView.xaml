@@ -33,8 +33,8 @@
                     <ColumnDefinition Width="45*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Wczytaj kontener" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
-                        cal:Message.Attach="[Event Click]=[Action ReadContainer];"/>
+                <Button Grid.Column="0" Content="Wczytaj kontener" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"
+                        cal:Message.Attach="[Event Click]=[Action ReadContainer];" VerticalAlignment="Bottom"/>
                 
                 <Button Grid.Column="2" Content="Wczytaj wiadomość do ukrycia" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
                         cal:Message.Attach="[Event Click]=[Action ReadMessageToHide];"/>
@@ -55,8 +55,8 @@
                          IsEnabled="{Binding ShouldEnableHide}"/>
             </Grid>
             <ScrollViewer Grid.Row="1" Grid.Column="0">
-                <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToStringConverter}}"  />
-                <!--                <Image Source="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToImageConverter}}"/>-->
+                <!--<TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToStringConverter}}"  />-->
+                <Image Source="{Binding Path=ActiveItem.HiddenRawMessage, Converter={StaticResource ByteToImageConverter}}"/>
             </ScrollViewer>
             <ScrollViewer Grid.Row="1" Grid.Column="1">
                 <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.DecodedMessage, Converter={StaticResource ByteToStringConverter}}"  />

@@ -46,7 +46,7 @@ namespace StegItCaliburnWay
                 throw new ArgumentException();
             }
 
-            if (bitmapImage.HasAlphaChannel())
+            if (bitmapImage.HasAlphaChannel() || bitmapImage.IsIndextedImage())
                 bitmapImage.Save(dlg.FileName);
             else
                 bitmapImage.SaveAsNot32BitImage(dlg.FileName);

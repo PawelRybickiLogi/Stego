@@ -115,6 +115,19 @@ namespace StegItCaliburnWay.Utils
             return byteArray;
         }
 
+        public static byte[] GifToBytes(Bitmap imageBitMap)
+        {
+            byte[] byteArray = new byte[0];
+            using (MemoryStream stream = new MemoryStream())
+            {
+                imageBitMap.Save(stream, ImageFormat.Gif);
+                stream.Close();
+
+                byteArray = stream.ToArray();
+            }
+            return byteArray;
+        }
+
         public static byte[] BitmapToPngBytes(Bitmap imageBitMap)
         {
             byte[] byteArray = new byte[0];

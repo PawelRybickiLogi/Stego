@@ -68,7 +68,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
 
         public override Type dialogType
         {
-            get { return DialogType.BmpImage; }
+            get { return DialogType.PngImage; }
         }
 
         public override ImageFile PerformHiding(ImageViewModel imageViewModel)

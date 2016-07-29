@@ -35,7 +35,9 @@ namespace StegItCaliburnWay.ViewModels
             {
                 textViewModel, imageViewModel, videoViewModel, soundViewModel
             });
+
         }
+
 
         public void ReadContainer()
         {
@@ -43,10 +45,7 @@ namespace StegItCaliburnWay.ViewModels
             {
                 ActiveItem.OpenReadDialog();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            catch (ArgumentException e) { }
 
             UpdateUI();
         }
@@ -57,10 +56,7 @@ namespace StegItCaliburnWay.ViewModels
             {
                 ActiveItem.MessageToHide = _filePickerDialog.OpenReadDialog(DialogType.Text);
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            catch (ArgumentException e) { }
 
             UpdateUI();
         }
