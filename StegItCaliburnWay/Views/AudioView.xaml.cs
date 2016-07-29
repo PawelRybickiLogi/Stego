@@ -18,9 +18,9 @@ namespace StegItCaliburnWay.Views
     /// <summary>
     /// Interaction logic for ThirdView.xaml
     /// </summary>
-    public partial class SoundView : UserControl
+    public partial class AudioView : UserControl
     {
-        public SoundView()
+        public AudioView()
         {
             InitializeComponent();
         }

@@ -26,7 +26,7 @@ namespace StegItCaliburnWay.ViewModels
             ImageViewModel imageViewModel,
             TextViewModel textViewModel,
             VideoViewModel videoViewModel,
-            SoundViewModel soundViewModel,
+            AudioViewModel soundViewModel,
             FilePickerDialog filePickerDialog)
         {
             _filePickerDialog = filePickerDialog;
@@ -44,9 +44,10 @@ namespace StegItCaliburnWay.ViewModels
             {
                 ActiveItem.OpenReadDialog();
             }
-            catch (Exception e)
+            catch (ArgumentException ex) { }
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Nieprawidłowa nazwa pliku");
             }
 
             UpdateUI();

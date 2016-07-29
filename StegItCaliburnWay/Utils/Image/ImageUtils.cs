@@ -47,7 +47,7 @@ namespace StegItCaliburnWay.Utils
                                  new Rectangle(0, 0, bmp.Width, bmp.Height),
                                  ImageLockMode.WriteOnly, bmp.PixelFormat);
 
-            //Copy the data from the byte array into BitmapData.Scan0
+            //Copy the bytes from the byte array into BitmapData.Scan0
             Marshal.Copy(bytes, 0, bmpData.Scan0, image.PixelWidth * image.PixelHeight * 4);
 
             //Unlock the pixels

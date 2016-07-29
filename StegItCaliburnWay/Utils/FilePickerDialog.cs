@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using Microsoft.Win32;
+using StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave;
 using StegItCaliburnWay.Utils;
 using StegItCaliburnWay.Utils.ExtensionsMethods;
 using Type = StegItCaliburnWay.Utils.Type;
@@ -83,6 +84,26 @@ namespace StegItCaliburnWay
                 return;
 
             FileWriter.WriteToFile(dlg.FileName, hiddenMessage);
+        }
+
+        public AudioFile OpenReadAudioDialog(Type fileType)
+        {
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = fileType.defaultExt,
+                Filter = fileType.filter
+            };
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName == "")
+            {
+                throw new ArgumentException();
+            }
+
+            var bytes = FileReader.ReadFile(dlg.FileName);
+
+            return new AudioFile(bytes);
         }
     }
 }

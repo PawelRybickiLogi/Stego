@@ -85,8 +85,12 @@
     </ApplicationDefinition>
     <Compile Include="Logic\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
+    <Compile Include="Logic\Steganography\AudioSteganography\AudioMethod.cs" />
+    <Compile Include="Logic\Steganography\AudioSteganography\Methods\AudioCodingMethod.cs" />
+    <Compile Include="Utils\Audio\AudioFile.cs" />
+    <Compile Include="Logic\Steganography\AudioSteganography\Methods\Wave\WaveCoding.cs" />
+    <Compile Include="Logic\Steganography\AudioSteganography\Methods\Wave\WaveCodingValidator.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\LockBitmap.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap32\Bitmap32Coding.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Coding.cs" />
     <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Validator.cs" />
@@ -102,12 +106,14 @@
     <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\ValueType.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticCodingValidator.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCodingValidator.cs" />
+    <Compile Include="Utils\Audio\WaveFile.cs" />
     <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitArrayExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitmapDataExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\ColorExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\ExtenstionMethods.cs" />
     <Compile Include="Utils\ExtensionsMethods\ImageExtensions.cs" />
+    <Compile Include="Utils\ExtensionsMethods\IntExtensions.cs" />
     <Compile Include="Utils\FilePickerDialog.cs" />
     <Compile Include="Utils\FileReader.cs" />
     <Compile Include="Utils\FileWriter.cs" />
@@ -117,14 +123,14 @@
     <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCoding.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\Methods\TextCodingMethod.cs" />
     <Compile Include="Logic\Steganography\TextSteganography\TextMethod.cs" />
-    <Compile Include="Utils\ImageFile.cs" />
-    <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Utils\Image\ImageFile.cs" />
+    <Compile Include="Utils\Image\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\IStegenographyMethodViewModel.cs" />
     <Compile Include="Logic\Steganography\IStegenographyOperations.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\SoundViewModel.cs" />
+    <Compile Include="ViewModels\AudioViewModel.cs" />
     <Compile Include="ViewModels\TextViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
     <Compile Include="Views\ImageView.xaml.cs">
@@ -141,8 +147,8 @@
     <Compile Include="Views\TextView.xaml.cs">
       <DependentUpon>TextView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SoundView.xaml.cs">
-      <DependentUpon>SoundView.xaml</DependentUpon>
+    <Compile Include="Views\AudioView.xaml.cs">
+      <DependentUpon>AudioView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VideoView.xaml.cs">
       <DependentUpon>VideoView.xaml</DependentUpon>
@@ -163,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SoundView.xaml">
+    <Page Include="Views\AudioView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -199,9 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Logic\Steganography\ImageSteganography\Resources\256bit_palette.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\256bit_palette.gif" />

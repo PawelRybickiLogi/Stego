@@ -68,5 +68,5 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.Pr
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.csproj.GenerateResource.Cache
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.baml
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\SoundView.g.cs
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\SoundView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\AudioView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\AudioView.baml
