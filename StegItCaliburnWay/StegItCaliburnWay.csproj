@@ -133,7 +133,10 @@
     <Compile Include="Utils\Image\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
     <Compile Include="Utils\Video\VideoFile.cs" />
+    <Compile Include="ViewModels\HiddenMessageAudioViewModel.cs" />
+    <Compile Include="ViewModels\HiddenMessageImageViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageTextViewModel.cs" />
+    <Compile Include="ViewModels\HiddenMessageVideoViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\IStegenographyMethodViewModel.cs" />
     <Compile Include="Logic\Steganography\IStegenographyOperations.cs" />
@@ -141,8 +144,17 @@
     <Compile Include="ViewModels\AudioViewModel.cs" />
     <Compile Include="ViewModels\TextViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
+    <Compile Include="Views\HiddenMessageAudioView.xaml.cs">
+      <DependentUpon>HiddenMessageAudioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HiddenMessageImageView.xaml.cs">
+      <DependentUpon>HiddenMessageImageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HiddenMessageTextView.xaml.cs">
       <DependentUpon>HiddenMessageTextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HiddenMessageVideoView.xaml.cs">
+      <DependentUpon>HiddenMessageVideoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
@@ -168,7 +180,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HiddenMessageAudioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HiddenMessageImageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HiddenMessageTextView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HiddenMessageVideoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

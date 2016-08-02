@@ -74,3 +74,9 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageT
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\LoadingIndicators.WPF.dll
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\LoadingIndicators.WPF.pdb
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.csprojResolveAssemblyReference.cache
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageImageView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageImageView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageAudioView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageAudioView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageVideoView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageVideoView.g.cs

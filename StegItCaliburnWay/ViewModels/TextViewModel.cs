@@ -20,6 +20,7 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _messageToHide;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
+        private object _hiddenMessageViewModel;
 
         public List<TextMethod> TextMethods { get; set; }
         private TextMethod _selectedTextMethod;
@@ -107,15 +108,13 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveDialog(DialogType.Text, HiddenRawMessage);
         }
 
-
-        private object _hiddenMessageViewModel;
         public object HiddenMessageViewModel {
 
             get { return _hiddenMessageViewModel; }
             set
             {
                 _hiddenMessageViewModel = value;
-                NotifyOfPropertyChange(()=>HiddenMessageViewModel);
+                NotifyOfPropertyChange(()  => HiddenMessageViewModel);
             }
         }
 
@@ -129,9 +128,8 @@ namespace StegItCaliburnWay.ViewModels
 
         public async Task Hide()
         {
-            await Task.Delay(5000);
             HiddenRawMessage = await PerformHiding();
-            HiddenMessageViewModel = new HiddenMessageTextViewModel(new string(TextUtils.GetUTF8CharArrayFromByteStream(HiddenRawMessage)).Replace("\0", string.Empty));
+            HiddenMessageViewModel = new HiddenMessageTextViewModel(HiddenRawMessage);
         }
 
         private Task<byte[]> PerformHiding()

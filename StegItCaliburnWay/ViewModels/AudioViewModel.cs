@@ -20,6 +20,7 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _hiddenMessage;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
+        private object _hiddenMessageViewModel;
         
         private AudioFile _containerAudioFile;
         private AudioFile _hiddenAudioFile;
@@ -140,6 +141,7 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+
         public void OpenReadDialog()
         {
             AudioFile file = _filePickerDialog.OpenReadAudioDialog(_selectedAudioMethod.dialogType);
@@ -159,33 +161,37 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveDialog(_selectedAudioMethod.dialogType, HiddenMessageAudioFile.bytes);
         }
 
-        public object HiddenMessageViewModel { get; private set; }
-        public void Clear()
+        public object HiddenMessageViewModel
         {
-            throw new NotImplementedException();
+            get { return _hiddenMessageViewModel; }
+            set
+            {
+                _hiddenMessageViewModel = value;
+                NotifyOfPropertyChange(() => HiddenMessageViewModel);
+            }
         }
 
-        public Task Hide()
+        public void Clear()
         {
-            return Task.Factory.StartNew(() =>
-            {
-                try
-                {
-                    AudioFile file = _selectedAudioMethod.PerformHiding(this);
-                    HiddenRawMessage = file.bytes;
-                    HiddenMessageAudioFile = file;
-                    HiddenMessageAudioInfo =
-                        "Plik dźwiękowy ukrytej wiadomości obecny" + Environment.NewLine +
-                        "Ilość próbek: " + file.waveFile.totalSamples + Environment.NewLine +
-                        "Bitów na próbkę: " + file.waveFile.bitsPerSample + Environment.NewLine +
-                        "Ilość kanałów: " + file.waveFile.bitsPerSample + Environment.NewLine +
-                        "Rozmiar w bajtach: " + file.bytes.Length;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            });
+            ContainerRawMessage = null;
+            MessageToHide = null;
+            HiddenMessageViewModel = null;
+            DecodedMessage = null;
+            HiddenMessageAudioInfo = null;
+            ContainerAudioInfo = null;
+        }
+
+        public async Task Hide()
+        {
+            AudioFile file = await PerformHiding();
+            HiddenRawMessage = file.bytes;
+            HiddenMessageAudioFile = file;
+            HiddenMessageViewModel = new HiddenMessageAudioViewModel(file);
+        }
+
+        private Task<AudioFile> PerformHiding()
+        {
+            return Task.Factory.StartNew(() => _selectedAudioMethod.PerformHiding(this));
         }
 
         public Task Decode()

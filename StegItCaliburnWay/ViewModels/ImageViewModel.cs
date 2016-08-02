@@ -19,6 +19,8 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _messageToHide;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
+        private object _hiddenMessageViewModel;
+
         private Bitmap _containerBitmapMessage;
         private Bitmap _hiddenBitmapMessage;
 
@@ -131,38 +133,47 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveImageDialog(HiddenBitmapMessage, _selectedImageMethod.dialogType);
         }
 
-        public object HiddenMessageViewModel { get; private set; }
+        public object HiddenMessageViewModel
+        {
+
+            get { return _hiddenMessageViewModel; }
+            set
+            {
+                _hiddenMessageViewModel = value;
+                NotifyOfPropertyChange(() => HiddenMessageViewModel);
+            }
+        }
+
         public void Clear()
         {
-            throw new NotImplementedException();
+            ContainerRawMessage = null;
+            MessageToHide = null;
+            HiddenMessageViewModel = null;
+            DecodedMessage = null;
         }
 
-        public Task Hide()
+        public async Task Hide()
         {
-            return Task.Factory.StartNew(() =>
-            {
-                try
-                {
-                    ImageFile file = _selectedImageMethod.PerformHiding(this);
-                    HiddenRawMessage = file.Bytes;
-                    HiddenBitmapMessage = file.Bitmap;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            });
+            ImageFile file = await PerformHiding();
+            HiddenRawMessage = file.Bytes;
+            HiddenBitmapMessage = file.Bitmap;
+            HiddenMessageViewModel = new HiddenMessageImageViewModel(file.Bytes);
         }
 
-        public Task Decode()
+        private Task<ImageFile> PerformHiding()
         {
-            return Task.Factory.StartNew(() =>
-            {
+            return Task.Factory.StartNew(() => _selectedImageMethod.PerformHiding(this));
+        }
 
-                ImageFile file = _selectedImageMethod.PerformDecoding(this);
-                DecodedMessage = file.Bytes;
-            });
+        public async Task Decode()
+        {
+            ImageFile file = await PerformDecoding();
+            DecodedMessage = file.Bytes;
+        }
 
+        private Task<ImageFile> PerformDecoding()
+        {
+            return Task.Factory.StartNew(() => _selectedImageMethod.PerformDecoding(this));   
         }
     }
 }

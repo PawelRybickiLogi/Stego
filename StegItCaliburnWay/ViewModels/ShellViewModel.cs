@@ -149,7 +149,7 @@ namespace StegItCaliburnWay.ViewModels
 
         public bool ShouldEnableSaveToFileFile
         {
-            get { return ActiveItem.HiddenRawMessage != null; }
+            get { return ActiveItem.HiddenMessageViewModel != null; }
         }
 
         public bool ShouldEnableShowHiddenMessage
@@ -157,11 +157,17 @@ namespace StegItCaliburnWay.ViewModels
             get { return ActiveItem.ContainerRawMessage != null; }
         }
 
+        public bool ShouldEnableClear
+        {
+            get { return ActiveItem.ContainerRawMessage != null || ActiveItem.HiddenMessageViewModel != null || ActiveItem.MessageToHide != null; }
+        }
+
         private void UpdateUI()
         {
             NotifyOfPropertyChange(() => ShouldEnableHide);
             NotifyOfPropertyChange(() => ShouldEnableSaveToFileFile);
             NotifyOfPropertyChange(() => ShouldEnableShowHiddenMessage);
+            NotifyOfPropertyChange(() => ShouldEnableClear);
         }
     }
 }

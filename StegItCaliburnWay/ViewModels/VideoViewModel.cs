@@ -19,6 +19,7 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _hiddenMessage;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
+        private object _hiddenMessageViewModel;
 
         private VideoFile _hiddenMessageVideoFile;
         private VideoFile _containerVideoFile;
@@ -95,6 +96,16 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public VideoFile HiddenMessageVideoFile
+        {
+            get { return _hiddenMessageVideoFile; }
+            set
+            {
+                _hiddenMessageVideoFile = value;
+                NotifyOfPropertyChange(() => HiddenMessageVideoFile);
+            }
+        }
+
         public byte[] DecodedMessage
         {
             get { return _decodedMessage; }
@@ -105,6 +116,17 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public object HiddenMessageViewModel
+        {
+
+            get { return _hiddenMessageViewModel; }
+            set
+            {
+                _hiddenMessageViewModel = value;
+                NotifyOfPropertyChange(() => HiddenMessageViewModel);
+            }
+        }
+
         public void OpenReadDialog()
         {
             VideoFile file = _filePickerDialog.OpenReadVideoDialog(_selectedVideoMethod.dialogType);
@@ -112,36 +134,43 @@ namespace StegItCaliburnWay.ViewModels
             ContainerVideoFile = file;
         }
 
-        public Task Hide()
+        public async Task Hide()
         {
-            return Task.Factory.StartNew(() =>
-            {
-
-            });
+            VideoFile file = await PerformHiding();
+            HiddenRawMessage = file.hiddenMessageBytes;
+            HiddenMessageViewModel = new HiddenMessageVideoViewModel(file);
         }
 
-
-
-        public Task Decode()
+        private Task<VideoFile> PerformHiding()
         {
-            return Task.Factory.StartNew(() =>
-            {
+            return Task.Factory.StartNew(() => _selectedVideoMethod.PerformHiding(this));
+        }
 
-                VideoFile file = _selectedVideoMethod.PerformDecoding(this);
-                DecodedMessage = file.hiddenMessageBytes;
-            });
+        public async Task Decode()
+        {
+            VideoFile file = await PerformDecoding();
+            DecodedMessage = file.hiddenMessageBytes;
+        }
 
+        private Task<VideoFile> PerformDecoding()
+        {
+            return Task.Factory.StartNew(() => _selectedVideoMethod.PerformDecoding(this));
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _filePickerDialog.OpenSaveDialog(_selectedVideoMethod.dialogType, HiddenMessageVideoFile.hiddenMessageBytes);
         }
 
-        public object HiddenMessageViewModel { get; private set; }
+
         public void Clear()
         {
-            throw new NotImplementedException();
+            ContainerRawMessage = null;
+            MessageToHide = null;
+            HiddenMessageViewModel = null;
+            DecodedMessage = null;
+            ContainerVideoFile = null;
+            HiddenMessageVideoFile = null;
         }
     }
 }

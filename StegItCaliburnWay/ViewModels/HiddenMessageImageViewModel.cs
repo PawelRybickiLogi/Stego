@@ -7,23 +7,23 @@ using Caliburn.Micro;
 
 namespace StegItCaliburnWay.ViewModels
 {
-    public class HiddenMessageTextViewModel : Screen
+    class HiddenMessageImageViewModel : Screen
     {
-        private byte[] _hiddenMessageText;
+        private byte[] _hiddenMessageImage;
 
         public byte[] HiddenMessage
         {
-            get { return _hiddenMessageText; }
+            get { return _hiddenMessageImage; }
         }
 
-        public HiddenMessageTextViewModel(byte[] hiddenMessageText)
+        public HiddenMessageImageViewModel(byte[] hiddenMessageImage)
         {
-            _hiddenMessageText = hiddenMessageText;
+            _hiddenMessageImage = hiddenMessageImage;
         }
 
         public void Clear()
         {
-            _hiddenMessageText = null;
+            _hiddenMessageImage = null;
 
             NotifyOfPropertyChange(() => HiddenMessage);
         }
