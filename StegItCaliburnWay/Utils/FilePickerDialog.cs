@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave;
 using StegItCaliburnWay.Utils;
 using StegItCaliburnWay.Utils.ExtensionsMethods;
+using StegItCaliburnWay.Utils.Video;
 using Type = StegItCaliburnWay.Utils.Type;
 
 namespace StegItCaliburnWay
@@ -104,6 +105,26 @@ namespace StegItCaliburnWay
             var bytes = FileReader.ReadFile(dlg.FileName);
 
             return new AudioFile(bytes);
+        }
+
+        public VideoFile OpenReadVideoDialog(Type dialogType)
+        {
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = dialogType.defaultExt,
+                Filter = dialogType.filter
+            };
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName == "")
+            {
+                throw new ArgumentException();
+            }
+
+            var bytes = FileReader.ReadFile(dlg.FileName);
+
+            return new VideoFile();
         }
     }
 }

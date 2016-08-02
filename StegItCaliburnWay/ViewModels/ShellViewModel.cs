@@ -70,40 +70,58 @@ namespace StegItCaliburnWay.ViewModels
             UpdateUI();
         }
 
-        public void Hide()
+        public async void Hide()
         {
+            LoaderVisibility = Visibility.Visible;
+
             try
             {
-                ActiveItem.Hide();
+                await ActiveItem.Hide();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-
-            UpdateUI();
+            finally
+            {
+                UpdateUI();
+                LoaderVisibility = Visibility.Collapsed;
+            }
         }
 
-        public void Decode()
+        public async void Decode()
         {
+            LoaderVisibility = Visibility.Visible;
+
             try
             {
-                ActiveItem.Decode();
+                await ActiveItem.Decode();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
+            finally
+            {
+                UpdateUI();
+                LoaderVisibility = Visibility.Collapsed;
+            }
+        }
 
-            UpdateUI();
+        private Visibility _loaderVisibility = Visibility.Collapsed;
+        public Visibility LoaderVisibility
+        {
+            get { return _loaderVisibility; }
+            set
+            {
+                _loaderVisibility = value;
+                NotifyOfPropertyChange(()=>LoaderVisibility);
+            }
         }
 
         public void Clear()
         {
-            ActiveItem.HiddenRawMessage = null;
-            ActiveItem.ContainerRawMessage = null;
-            ActiveItem.MessageToHide = null;
-            ActiveItem.DecodedMessage = null;
+            ActiveItem.Clear();
 
             UpdateUI();
         }

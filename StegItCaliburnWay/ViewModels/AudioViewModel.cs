@@ -20,8 +20,12 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _hiddenMessage;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
+        
         private AudioFile _containerAudioFile;
         private AudioFile _hiddenAudioFile;
+
+        private string _containerAudioInfo;
+        private string _hiddenMessageAudioInfo;
 
         public List<AudioMethod> AudioMethods { get; set; }
         private AudioMethod _selectedAudioMethod;
@@ -54,6 +58,26 @@ namespace StegItCaliburnWay.ViewModels
         {
             get { return "Dźwięk"; }
             set { }
+        }
+
+        public string ContainerAudioInfo
+        {
+            get { return _containerAudioInfo; }
+            set
+            {
+                _containerAudioInfo = value;
+                NotifyOfPropertyChange(() => ContainerAudioInfo);
+            }
+        }
+
+        public string HiddenMessageAudioInfo
+        {
+            get { return _hiddenMessageAudioInfo; }
+            set
+            {
+                _hiddenMessageAudioInfo = value;
+                NotifyOfPropertyChange(() => HiddenMessageAudioInfo);
+            }
         }
 
         public byte[] MessageToHide
@@ -121,6 +145,13 @@ namespace StegItCaliburnWay.ViewModels
             AudioFile file = _filePickerDialog.OpenReadAudioDialog(_selectedAudioMethod.dialogType);
             ContainerRawMessage = file.bytes;
             ContainerAudioFile = file;
+            ContainerAudioInfo =
+                "Plik dźwiękowy kontenera obecny" + Environment.NewLine +
+                "Ilość próbek: " + file.waveFile.totalSamples + Environment.NewLine +
+                "Bitów na próbkę: " + file.waveFile.bitsPerSample + Environment.NewLine +
+                "Ilość kanałów: " + file.waveFile.channels + Environment.NewLine +
+                "Rozmiar w bajtach: " + file.bytes.Length;
+
         }
 
         public void Save()
@@ -128,24 +159,43 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveDialog(_selectedAudioMethod.dialogType, HiddenMessageAudioFile.bytes);
         }
 
-        public void Hide()
+        public object HiddenMessageViewModel { get; private set; }
+        public void Clear()
         {
-            try
-            {
-                AudioFile file = _selectedAudioMethod.PerformHiding(this);
-                HiddenRawMessage = file.bytes;
-                HiddenMessageAudioFile = file;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            throw new NotImplementedException();
         }
 
-        public void Decode()
+        public Task Hide()
         {
-            AudioFile file = _selectedAudioMethod.PerformDecoding(this);
-            DecodedMessage = file.hiddenMessageBytes;
+            return Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    AudioFile file = _selectedAudioMethod.PerformHiding(this);
+                    HiddenRawMessage = file.bytes;
+                    HiddenMessageAudioFile = file;
+                    HiddenMessageAudioInfo =
+                        "Plik dźwiękowy ukrytej wiadomości obecny" + Environment.NewLine +
+                        "Ilość próbek: " + file.waveFile.totalSamples + Environment.NewLine +
+                        "Bitów na próbkę: " + file.waveFile.bitsPerSample + Environment.NewLine +
+                        "Ilość kanałów: " + file.waveFile.bitsPerSample + Environment.NewLine +
+                        "Rozmiar w bajtach: " + file.bytes.Length;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            });
+        }
+
+        public Task Decode()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+
+                AudioFile file = _selectedAudioMethod.PerformDecoding(this);
+                DecodedMessage = file.hiddenMessageBytes;
+            });
         }
 
     }

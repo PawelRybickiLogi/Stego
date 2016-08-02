@@ -9,7 +9,7 @@ namespace StegItCaliburnWay.ViewModels
 {
     public interface IStegenographyOperations
     {
-        void Hide();
-        void Decode();
+        Task Hide();
+        Task Decode();
     }
 }

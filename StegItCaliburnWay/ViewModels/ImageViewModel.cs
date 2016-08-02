@@ -131,25 +131,38 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveImageDialog(HiddenBitmapMessage, _selectedImageMethod.dialogType);
         }
 
-        public void Hide()
+        public object HiddenMessageViewModel { get; private set; }
+        public void Clear()
         {
-            try
-            {
-                ImageFile file = _selectedImageMethod.PerformHiding(this);
-                HiddenRawMessage = file.Bytes;
-                HiddenBitmapMessage = file.Bitmap;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            throw new NotImplementedException();
         }
 
-        public void Decode()
+        public Task Hide()
         {
-            ImageFile file = _selectedImageMethod.PerformDecoding(this);
-            DecodedMessage = file.Bytes;
+            return Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    ImageFile file = _selectedImageMethod.PerformHiding(this);
+                    HiddenRawMessage = file.Bytes;
+                    HiddenBitmapMessage = file.Bitmap;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            });
+        }
+
+        public Task Decode()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+
+                ImageFile file = _selectedImageMethod.PerformDecoding(this);
+                DecodedMessage = file.Bytes;
+            });
+
         }
     }
 }

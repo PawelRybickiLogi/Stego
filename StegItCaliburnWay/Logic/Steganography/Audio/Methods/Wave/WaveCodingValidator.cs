@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave
 {
@@ -15,7 +11,8 @@ namespace StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave
 
             if (containerAudioFile.waveFile.bitsPerSample != 8 &&
                 containerAudioFile.waveFile.bitsPerSample != 16 &&
-                containerAudioFile.waveFile.bitsPerSample != 24)
+                containerAudioFile.waveFile.bitsPerSample != 24 &&
+                containerAudioFile.waveFile.bitsPerSample != 32)
             {
                 throw new Exception("Nieprawidłowa liczba bitów na próbkę! Wspierane: 8/16/24");
             }

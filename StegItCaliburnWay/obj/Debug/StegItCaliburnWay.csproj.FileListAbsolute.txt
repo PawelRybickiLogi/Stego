@@ -36,7 +36,6 @@ C:\Users\Damian\Source\Repos\Stego\StegItCaliburnWay\obj\Debug\Dictionary1.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\StegItCaliburnWay.exe.config
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.exe
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.pdb
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.csprojResolveAssemblyReference.cache
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ImageView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ShellView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\TextView.g.cs
@@ -70,3 +69,8 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\VideoView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\AudioView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\AudioView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageTextView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageTextView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\LoadingIndicators.WPF.dll
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\LoadingIndicators.WPF.pdb
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\StegItCaliburnWay.csprojResolveAssemblyReference.cache

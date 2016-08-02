@@ -107,14 +107,46 @@ namespace StegItCaliburnWay.ViewModels
             _filePickerDialog.OpenSaveDialog(DialogType.Text, HiddenRawMessage);
         }
 
-        public void Hide()
-        {
-            HiddenRawMessage = _selectedTextMethod.PerformHiding(this);
+
+        private object _hiddenMessageViewModel;
+        public object HiddenMessageViewModel {
+
+            get { return _hiddenMessageViewModel; }
+            set
+            {
+                _hiddenMessageViewModel = value;
+                NotifyOfPropertyChange(()=>HiddenMessageViewModel);
+            }
         }
 
-        public void Decode()
+        public void Clear()
         {
-            DecodedMessage = _selectedTextMethod.PerformDecoding(this);
+            ContainerRawMessage = null;
+            MessageToHide = null;
+            HiddenMessageViewModel = null;
+            DecodedMessage = null;
+        }
+
+        public async Task Hide()
+        {
+            await Task.Delay(5000);
+            HiddenRawMessage = await PerformHiding();
+            HiddenMessageViewModel = new HiddenMessageTextViewModel(new string(TextUtils.GetUTF8CharArrayFromByteStream(HiddenRawMessage)).Replace("\0", string.Empty));
+        }
+
+        private Task<byte[]> PerformHiding()
+        {
+            return Task.Factory.StartNew(() => _selectedTextMethod.PerformHiding(this));
+        }
+
+        public async Task Decode()
+        {
+            DecodedMessage = await PerformDecoding();
+        }
+
+        private Task<byte[]> PerformDecoding()
+        {
+            return Task.Factory.StartNew(() => _selectedTextMethod.PerformDecoding(this));
         }
     }
 }

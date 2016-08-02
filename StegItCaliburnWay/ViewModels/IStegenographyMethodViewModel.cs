@@ -10,5 +10,9 @@ namespace StegItCaliburnWay.ViewModels
         byte[] DecodedMessage { get; set; }
         void OpenReadDialog();
         void Save();
+
+        object HiddenMessageViewModel { get; }
+
+        void Clear();
     }
 }

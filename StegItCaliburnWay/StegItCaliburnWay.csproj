@@ -49,6 +49,9 @@
       <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LoadingIndicators.WPF">
+      <HintPath>..\packages\LoadingIndicators.WPF.0.0.1\lib\LoadingIndicators.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -85,27 +88,30 @@
     </ApplicationDefinition>
     <Compile Include="Logic\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
-    <Compile Include="Logic\Steganography\AudioSteganography\AudioMethod.cs" />
-    <Compile Include="Logic\Steganography\AudioSteganography\Methods\AudioCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Audio\AudioMethod.cs" />
+    <Compile Include="Logic\Steganography\Audio\Methods\AudioCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCoding.cs" />
+    <Compile Include="Logic\Steganography\Video\Methods\VideoCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Video\VideoMethod.cs" />
     <Compile Include="Utils\Audio\AudioFile.cs" />
-    <Compile Include="Logic\Steganography\AudioSteganography\Methods\Wave\WaveCoding.cs" />
-    <Compile Include="Logic\Steganography\AudioSteganography\Methods\Wave\WaveCodingValidator.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\ImageMethod.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap32\Bitmap32Coding.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Coding.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap24\Bitmap24Validator.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Bitmap32\Bitmap32Validator.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\BitmapEOFmarker.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Gif\GifCoding.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\Gif\GifCodingValidator.cs" />
-    <Compile Include="Logic\Steganography\ImageSteganography\Methods\ImageCodingMethod.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CodingSign.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CustomCoding.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\CustomCodingValidator.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\SettingsFrameFromContent.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\CustomMethod\ValueType.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticCodingValidator.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Audio\Methods\Wave\WaveCoding.cs" />
+    <Compile Include="Logic\Steganography\Audio\Methods\Wave\WaveCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Image\ImageMethod.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Bitmap32\Bitmap32Coding.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Bitmap24\Bitmap24Coding.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Bitmap24\Bitmap24Validator.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Bitmap32\Bitmap32Validator.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\BitmapEOFmarker.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Gif\GifCoding.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\Gif\GifCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Image\Methods\ImageCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\CodingSign.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\CustomCoding.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\CustomCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\SettingsFrameFromContent.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\ValueType.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SpaceCoding\SpaceCodingValidator.cs" />
     <Compile Include="Utils\Audio\WaveFile.cs" />
     <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitArrayExtensions.cs" />
@@ -118,14 +124,16 @@
     <Compile Include="Utils\FileReader.cs" />
     <Compile Include="Utils\FileWriter.cs" />
     <Compile Include="Logic\Converters\ByteToStringConverter.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticCoding.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\SemanticMethod\SemanticLettersValues.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\SpaceCoding\SpaceCoding.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\Methods\TextCodingMethod.cs" />
-    <Compile Include="Logic\Steganography\TextSteganography\TextMethod.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticCoding.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticLettersValues.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SpaceCoding\SpaceCoding.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\TextCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Text\TextMethod.cs" />
     <Compile Include="Utils\Image\ImageFile.cs" />
     <Compile Include="Utils\Image\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
+    <Compile Include="Utils\Video\VideoFile.cs" />
+    <Compile Include="ViewModels\HiddenMessageTextViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\IStegenographyMethodViewModel.cs" />
     <Compile Include="Logic\Steganography\IStegenographyOperations.cs" />
@@ -133,6 +141,9 @@
     <Compile Include="ViewModels\AudioViewModel.cs" />
     <Compile Include="ViewModels\TextViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
+    <Compile Include="Views\HiddenMessageTextView.xaml.cs">
+      <DependentUpon>HiddenMessageTextView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
     </Compile>
@@ -154,6 +165,10 @@
       <DependentUpon>VideoView.xaml</DependentUpon>
     </Compile>
     <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HiddenMessageTextView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
