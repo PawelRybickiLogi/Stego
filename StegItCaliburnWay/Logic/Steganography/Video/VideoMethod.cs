@@ -33,7 +33,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Video
 
         public override Type dialogType
         {
-            get { return DialogType.PngImage; }
+            get { return DialogType.AviFiles; }
         }
 
         public override VideoFile PerformDecoding(VideoViewModel videoViewModel)

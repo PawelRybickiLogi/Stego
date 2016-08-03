@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave;
 using StegItCaliburnWay.Utils;
@@ -13,6 +14,13 @@ namespace StegItCaliburnWay
 {
     public class FilePickerDialog
     {
+        private readonly AviFileReading _aviFileReading;
+
+        public FilePickerDialog(AviFileReading aviFileReading)
+        {
+            _aviFileReading = aviFileReading;
+        }
+
         public ImageFile OpenReadImageDialog(Type fileType)
         {
             var dlg = new OpenFileDialog
@@ -121,6 +129,10 @@ namespace StegItCaliburnWay
             {
                 throw new ArgumentException();
             }
+
+            _aviFileReading.Open(dlg.FileName);
+            _aviFileReading.ExportBitmap(20, dlg.FileName + "exportedBitmap");
+            _aviFileReading.Close();
 
             var bytes = FileReader.ReadFile(dlg.FileName);
 

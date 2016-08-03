@@ -132,6 +132,9 @@
     <Compile Include="Utils\Image\ImageFile.cs" />
     <Compile Include="Utils\Image\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
+    <Compile Include="Utils\Video\AviFileReading.cs" />
+    <Compile Include="Utils\Video\AviFileWriting.cs" />
+    <Compile Include="Utils\Video\AviReadingMethods.cs" />
     <Compile Include="Utils\Video\VideoFile.cs" />
     <Compile Include="ViewModels\HiddenMessageAudioViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageImageViewModel.cs" />

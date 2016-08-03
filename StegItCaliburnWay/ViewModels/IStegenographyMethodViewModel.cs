@@ -11,7 +11,5 @@ namespace StegItCaliburnWay.ViewModels
         void OpenReadDialog();
         void Save();
         void Clear();
-
-
     }
 }

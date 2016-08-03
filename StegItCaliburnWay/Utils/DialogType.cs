@@ -14,6 +14,7 @@ namespace StegItCaliburnWay.Utils
         public static Type BmpImage = new Type(".bmp", "BMP Files (*.bmp)|*.bmp|PNG Files (*.png)|*.png");
         public static Type GifImage = new Type(".gif", "GIF Files (*.gif)|*.gif");
         public static Type Audio = new Type(".wav", "WAVE Files (*.wav)|*.wav");
+        public static Type AviFiles = new Type(".avi", "AVI Files (*.avi)|*.avi");
     }
 
     public class Type

@@ -47,7 +47,7 @@ namespace StegItCaliburnWay.ViewModels
             catch (ArgumentException ex) { }
             catch (Exception ex)
             {
-                MessageBox.Show("Nieprawidłowa nazwa pliku");
+                MessageBox.Show(ex.Message);
             }
 
             UpdateUI();

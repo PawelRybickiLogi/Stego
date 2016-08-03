@@ -32,7 +32,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Content="Wczytaj kontener" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"
                         cal:Message.Attach="[Event Click]=[Action ReadContainer];" VerticalAlignment="Bottom"/>
-                
+
                 <Button Grid.Column="2" Content="Wczytaj wiadomość do ukrycia" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
                         cal:Message.Attach="[Event Click]=[Action ReadMessageToHide];"/>
             </Grid>
@@ -54,8 +54,7 @@
 
             <ContentControl Grid.Row="1" Grid.Column="0"
                             cal:View.Model="{Binding Path=ActiveItem.HiddenMessageViewModel}"></ContentControl>
-            
-            
+
             <ScrollViewer Grid.Row="1" Grid.Column="1">
                 <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.DecodedMessage, Converter={StaticResource ByteToStringConverter}}"  />
             </ScrollViewer>
@@ -72,14 +71,14 @@
         </Grid>
 
         <Grid Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1"
-              Visibility="{Binding LoaderVisibility}">
-            
+              Visibility="Hidden">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -94,9 +93,9 @@
             <Grid Background="Black" Grid.Row="1" Grid.Column="1">
                 <controls:ProgressRing Foreground="{DynamicResource AccentColorBrush}"/>
             </Grid>
-            
-        </Grid>    
-        
+
+        </Grid>
+
     </Grid>
 </controls:MetroWindow>
 
