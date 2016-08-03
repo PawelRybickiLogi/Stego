@@ -14,15 +14,32 @@
     </controls:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="50*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="35*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TabControl x:Name="Items" Grid.Row="0"></TabControl>
+        <Grid Grid.Row="0">
+            <DockPanel>
+                <Menu DockPanel.Dock="Top">
+                    <MenuItem Header="_Pomoc">
+                        <MenuItem Header="_Wskazówki" 
+                                  cal:Message.Attach="[Event Click]=[Action HowToUse]"/>
+                        <MenuItem Header="_O programie"
+                                  cal:Message.Attach="[Event Click]=[Action About]"/>
+                        <Separator />
+                        <MenuItem Header="_Wyjście" 
+                                  cal:Message.Attach="[Event Click]=[Action Exit]" />
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </Grid>
 
-        <Grid Grid.Row="1">
+        <TabControl x:Name="Items" Grid.Row="1"></TabControl>
+
+        <Grid Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="45*"></ColumnDefinition>
@@ -32,34 +49,51 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Content="Wczytaj kontener" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"
                         cal:Message.Attach="[Event Click]=[Action ReadContainer];" VerticalAlignment="Bottom"/>
-
+                
                 <Button Grid.Column="2" Content="Wczytaj wiadomość do ukrycia" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10" VerticalAlignment="Bottom"
                         cal:Message.Attach="[Event Click]=[Action ReadMessageToHide];"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"></ColumnDefinition>
-                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="45*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="45*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.ColumnSpan="2">
-                <Button  Content="Ukryj" HorizontalAlignment="Center" Padding="20, 2, 20, 2" Margin="10,10,10,10" VerticalAlignment="Bottom"
+            <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" Padding="0, 0, 10, 0" 
+                               Text="Zakodowana wiadomość"></TextBlock>
+                    <Button Grid.Column="1"  Content="Ukryj" HorizontalAlignment="Center" Padding="20, 2, 20, 2" Margin="10,10,10,10" VerticalAlignment="Bottom"
                          cal:Message.Attach="[Event Click]=[Action Hide]"
                          IsEnabled="{Binding ShouldEnableHide}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" Padding="0, 0, 10, 0" 
+                               Text="Zdekodowana ukryta wiadomość"></TextBlock>
+                </Grid>
             </Grid>
 
             <ContentControl Grid.Row="1" Grid.Column="0"
                             cal:View.Model="{Binding Path=ActiveItem.HiddenMessageViewModel}"></ContentControl>
-
-            <ScrollViewer Grid.Row="1" Grid.Column="1">
+            
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="2">
                 <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding Path=ActiveItem.DecodedMessage, Converter={StaticResource ByteToStringConverter}}"  />
             </ScrollViewer>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
@@ -72,13 +106,13 @@
 
         <Grid Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1"
               Visibility="Hidden">
-
+            
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="40*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -93,7 +127,7 @@
             <Grid Background="Black" Grid.Row="1" Grid.Column="1">
                 <controls:ProgressRing Foreground="{DynamicResource AccentColorBrush}"/>
             </Grid>
-
+            
         </Grid>
 
     </Grid>

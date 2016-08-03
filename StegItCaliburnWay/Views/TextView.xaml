@@ -23,16 +23,27 @@
             <ColumnDefinition Width="45*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ComboBox x:Name="TextMethods" Grid.Row="0" 
-            DisplayMemberPath="Name"
-            SelectedItem="{Binding SelectedTextMethod}">
-        </ComboBox>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" Padding="4, 0, 10, 0" Text="Wybierz algorytm:"></TextBlock>
+
+            <ComboBox x:Name="TextMethods" Grid.Column="1"
+                DisplayMemberPath="Name"
+                SelectedItem="{Binding SelectedTextMethod}">
+            </ComboBox>
+        </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="0">
             <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding ContainerRawMessage, Converter={StaticResource ByteToStringConverter}}" />
         </ScrollViewer>
         
         <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"></Label>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Padding="0, 0, 10, 0" Text="Tekst do ukrycia:"></TextBlock>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="2">
             <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding MessageToHide, Converter={StaticResource ByteToStringConverter}}"  />
