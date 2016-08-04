@@ -14,7 +14,6 @@ namespace StegItCaliburnWay.Utils.Video
     {
         private readonly AviReadingMethods _aviReadingMethods;
 
-        //position of the first frame, count of frames in the stream
         private int firstFrame = 0;
         private int countFrames = 0;
         private int getFrameObject;
@@ -47,20 +46,17 @@ namespace StegItCaliburnWay.Utils.Video
 
         public void Open(string fileName)
         {
-            //Intitialize AVI library
             AviReadingMethods.AVIFileInit();
 
-            //Open the file
             int result = AviReadingMethods.AVIFileOpen(
                 ref aviFile, fileName,
                 AviReadingMethods.OF_SHARE_DENY_WRITE, 0);
 
             if (result != 0)
             {
-                throw new Exception("Error during openning Avi file: " + result.ToString());
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
 
-            //Get the video stream
             result = AviReadingMethods.AVIFileGetStream(
                 aviFile,
                 out aviStream,
@@ -68,7 +64,7 @@ namespace StegItCaliburnWay.Utils.Video
 
             if (result != 0)
             {
-                throw new Exception("Error during openning Avi file: " + result.ToString());
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
 
             firstFrame = AviReadingMethods.AVIStreamStart(aviStream.ToInt32());
@@ -79,16 +75,14 @@ namespace StegItCaliburnWay.Utils.Video
 
             if (result != 0)
             {
-                throw new Exception("Error during openning Avi file: " + result.ToString());
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
-
-            //Open frames
 
             bih = new AviReadingMethods.BITMAPINFOHEADER();
             bih.biBitCount = 24;
             bih.biClrImportant = 0;
             bih.biClrUsed = 0;
-            bih.biCompression = 0; //BI_RGB;
+            bih.biCompression = 0; 
             bih.biHeight = (Int32)streamInfo.rcFrame.bottom;
             bih.biWidth = (Int32)streamInfo.rcFrame.right;
             bih.biPlanes = 1;
@@ -96,10 +90,10 @@ namespace StegItCaliburnWay.Utils.Video
             bih.biXPelsPerMeter = 0;
             bih.biYPelsPerMeter = 0;
 
-            getFrameObject = AviReadingMethods.AVIStreamGetFrameOpen(aviStream, ref bih); //force function to return 24bit DIBS
+            getFrameObject = AviReadingMethods.AVIStreamGetFrameOpen(aviStream, ref bih); 
             if (getFrameObject == 0)
             {
-                throw new Exception("Error during openning Avi file!");
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
         }
 
@@ -107,7 +101,7 @@ namespace StegItCaliburnWay.Utils.Video
         {
             if (position > countFrames)
             {
-                throw new Exception("Invalid frame position");
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
 
             int pDib = AviReadingMethods.AVIStreamGetFrame(getFrameObject, firstFrame + position);
@@ -117,10 +111,9 @@ namespace StegItCaliburnWay.Utils.Video
 
             if (bih.biSizeImage < 1)
             {
-                throw new Exception("Exception in AVIStreamGetFrame: Not bitmap decompressed.");
+                throw new Exception("Problem podczas otwierania pliku AVI" + Environment.NewLine + "Upewnij się, że plik nie został poddany kompresji");
             }
 
-            //Copy the image
             byte[] bitmapData = new byte[bih.biSizeImage];
             int address = pDib + Marshal.SizeOf(bih);
             for (int offset = 0; offset < bitmapData.Length; offset++)
@@ -129,7 +122,6 @@ namespace StegItCaliburnWay.Utils.Video
                 address++;
             }
 
-            //Copy bitmap info
             byte[] bitmapInfo = new byte[Marshal.SizeOf(bih)];
             IntPtr ptr;
             ptr = Marshal.AllocHGlobal(bitmapInfo.Length);
@@ -141,7 +133,6 @@ namespace StegItCaliburnWay.Utils.Video
                 address++;
             }
 
-            //Create file header
             AviReadingMethods.BITMAPFILEHEADER bfh = new AviReadingMethods.BITMAPFILEHEADER();
             bfh.bfType = AviReadingMethods.BMP_MAGIC_COOKIE;
             bfh.bfSize = (Int32)(55 + bih.biSizeImage); 
@@ -151,15 +142,12 @@ namespace StegItCaliburnWay.Utils.Video
 
             BinaryWriter bw = new BinaryWriter(new MemoryStream());
 
-            //Write header
             bw.Write(bfh.bfType);
             bw.Write(bfh.bfSize);
             bw.Write(bfh.bfReserved1);
             bw.Write(bfh.bfReserved2);
             bw.Write(bfh.bfOffBits);
-            //Write bitmap info
             bw.Write(bitmapInfo);
-            //Write bitmap data
             bw.Write(bitmapData);
 
             var bitmapToReturn = new Bitmap(bw.BaseStream);
@@ -169,7 +157,6 @@ namespace StegItCaliburnWay.Utils.Video
             return bitmapToReturn;
         }
 
-        //Closes all streams, files and libraries
         public void Close()
         {
             if (getFrameObject != 0)

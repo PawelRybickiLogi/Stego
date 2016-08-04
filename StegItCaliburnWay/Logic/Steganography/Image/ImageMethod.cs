@@ -32,7 +32,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
 
         public override string Name
         {
-            get { return "24-bit/32-bit no alpha PNG/BMP"; }
+            get { return "PNG/BMP - 24/32 bitowe, bez kanału alfa"; }
         }
 
         public override Type dialogType
@@ -63,7 +63,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography
 
         public override string Name
         {
-            get { return "32-bit alpha PNG/BMP"; }
+            get { return "PNG/BMP - 32 bitowe, z kanałem alfa"; }
         }
 
         public override Type dialogType

@@ -28,7 +28,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Video
 
         public override string Name
         {
-            get { return "Avi"; }
+            get { return "Avi (nieskompresowany)"; }
         }
 
         public override Type dialogType

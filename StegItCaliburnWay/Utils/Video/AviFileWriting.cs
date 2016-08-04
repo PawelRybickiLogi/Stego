@@ -19,7 +19,7 @@ namespace StegItCaliburnWay.Utils.Video
         private int height = 0;
         private UInt32 stride = 0;
         private UInt32 fccType = AviReadingMethods.StreamtypeVIDEO; // vids
-        private UInt32 fccHandler = 1668707181; //"Microsoft Video 1" - Use CVID for default codec: (UInt32)Avi.mmioStringToFOURCC("CVID", 0);
+        private UInt32 fccHandler = 1668707181; 
 
         public void Open(string fileName, UInt32 frameRate)
         {
@@ -29,10 +29,10 @@ namespace StegItCaliburnWay.Utils.Video
 
             int hr = AviReadingMethods.AVIFileOpen(
                 ref aviFile, fileName,
-                4097 /* OF_WRITE | OF_CREATE (winbase.h) */, 0);
+                4097, 0);
             if (hr != 0)
             {
-                throw new Exception("Error in AVIFileOpen: " + hr.ToString());
+                throw new Exception("Problem podczas otwierania pliku AVI" + hr.ToString());
             }
         }
 
@@ -47,7 +47,6 @@ namespace StegItCaliburnWay.Utils.Video
 
             if (countFrames == 0)
             {
-                //this is the first frame - get size and create a new stream
                 this.stride = (UInt32)bmpDat.Stride;
                 this.width = bmp.Width;
                 this.height = bmp.Height;
@@ -56,20 +55,19 @@ namespace StegItCaliburnWay.Utils.Video
 
             int result = AviReadingMethods.AVIStreamWrite(aviStream,
                 countFrames, 1,
-                bmpDat.Scan0, //pointer to the beginning of the image data
+                bmpDat.Scan0, 
                 (Int32)(stride * height),
                 0, 0, 0);
 
             if (result != 0)
             {
-                throw new Exception("Error in AVIStreamWrite: " + result.ToString());
+                throw new Exception("Problem podczas otwierania pliku AVI" + result.ToString());
             }
 
             bmp.UnlockBits(bmpDat);
             countFrames++;
         }
 
-        /// <summary>Closes stream, file and AVI library</summary>
         public void Close()
         {
             if (aviStream != IntPtr.Zero)
@@ -93,15 +91,13 @@ namespace StegItCaliburnWay.Utils.Video
             strhdr.dwScale = 1;
             strhdr.dwRate = frameRate;
             strhdr.dwSuggestedBufferSize = (UInt32)(height * stride);
-            strhdr.dwQuality = 10000; //highest quality! Compression destroys the hidden message
+            strhdr.dwQuality = 10000; 
             strhdr.rcFrame.bottom = (UInt32)height;
             strhdr.rcFrame.right = (UInt32)width;
             strhdr.szName = new UInt16[64];
 
             int result = AviReadingMethods.AVIFileCreateStream(aviFile, out aviStream, ref strhdr);
-            if (result != 0) { throw new Exception("Error in AVIFileCreateStream: " + result.ToString()); }
-
-            //define the image format
+            if (result != 0) { throw new Exception("Problem podczas tworzenia streamu pliku AVI" + result.ToString()); }
 
             AviReadingMethods.BITMAPINFOHEADER bi = new AviReadingMethods.BITMAPINFOHEADER();
             bi.biSize = (UInt32)Marshal.SizeOf(bi);
@@ -112,7 +108,7 @@ namespace StegItCaliburnWay.Utils.Video
             bi.biSizeImage = (UInt32)(stride * height);
 
             result = AviReadingMethods.AVIStreamSetFormat(aviStream, 0, ref bi, Marshal.SizeOf(bi));
-            if (result != 0) { throw new Exception("Error in AVIStreamSetFormat: " + result.ToString()); }
+            if (result != 0) { throw new Exception("Problem podczas tworzenia streamu pliku AVI" + result.ToString()); }
         }
     }
 }
