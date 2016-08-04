@@ -23,6 +23,22 @@ namespace StegItCaliburnWay.Utils.Video
         private int aviFile = 0;
         private IntPtr aviStream;
         private AviReadingMethods.AVISTREAMINFO streamInfo;
+        private AviReadingMethods.BITMAPINFOHEADER bih;
+
+        public AviReadingMethods.BITMAPINFOHEADER Bih
+        {
+            get { return bih; }
+        }
+
+        public int CountFrames
+        {
+            get { return countFrames; }
+        }
+
+        public UInt32 FrameRate
+        {
+            get { return streamInfo.dwRate / streamInfo.dwScale; }
+        }
 
         public AviFileReading(AviReadingMethods aviReadingMethods)
         {
@@ -68,7 +84,7 @@ namespace StegItCaliburnWay.Utils.Video
 
             //Open frames
 
-            AviReadingMethods.BITMAPINFOHEADER bih = new AviReadingMethods.BITMAPINFOHEADER();
+            bih = new AviReadingMethods.BITMAPINFOHEADER();
             bih.biBitCount = 24;
             bih.biClrImportant = 0;
             bih.biClrUsed = 0;
@@ -87,7 +103,7 @@ namespace StegItCaliburnWay.Utils.Video
             }
         }
 
-        public void ExportBitmap(int position, String dstFileName)
+        public Bitmap ExportBitmapFromFrameNumber(int position)
         {
             if (position > countFrames)
             {
@@ -133,9 +149,7 @@ namespace StegItCaliburnWay.Utils.Video
             bfh.bfReserved2 = 0;
             bfh.bfOffBits = Marshal.SizeOf(bih) + Marshal.SizeOf(bfh);
 
-            //Create or overwrite the destination file
-            FileStream fs = new FileStream(dstFileName, FileMode.Create);
-            BinaryWriter bw = new BinaryWriter(fs);
+            BinaryWriter bw = new BinaryWriter(new MemoryStream());
 
             //Write header
             bw.Write(bfh.bfType);
@@ -147,10 +161,12 @@ namespace StegItCaliburnWay.Utils.Video
             bw.Write(bitmapInfo);
             //Write bitmap data
             bw.Write(bitmapData);
-            var bmp = new Bitmap(fs);
-            bmp.Save(dstFileName+"22");
+
+            var bitmapToReturn = new Bitmap(bw.BaseStream);
+
             bw.Close();
-            fs.Close();
+
+            return bitmapToReturn;
         }
 
         //Closes all streams, files and libraries

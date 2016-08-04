@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StegItCaliburnWay.Utils.Video
 {
-    class AviFileWriting
+    public class AviFileWriting
     {
         private int aviFile = 0;
         private IntPtr aviStream = IntPtr.Zero;

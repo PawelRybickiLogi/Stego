@@ -9,7 +9,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Video.Methods
 {
     interface VideoCodingMethod
     {
-        VideoFile CreateHiddenMessage();
-        VideoFile DecodeHiddenMessage();
+        VideoFile CreateHiddenMessage(VideoFile containerVideoFile, byte[] messageToHide);
+        VideoFile DecodeHiddenMessage(VideoFile containerVideoFile);
     }
 }

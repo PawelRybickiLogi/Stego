@@ -131,12 +131,18 @@ namespace StegItCaliburnWay
             }
 
             _aviFileReading.Open(dlg.FileName);
-            _aviFileReading.ExportBitmap(20, dlg.FileName + "exportedBitmap");
+
+            var videoFile = new VideoFile(dlg.FileName)
+            {
+                FrameHeight = _aviFileReading.Bih.biHeight,
+                FrameWidth = _aviFileReading.Bih.biWidth,
+                FrameCount = _aviFileReading.CountFrames,
+                FrameRate = _aviFileReading.FrameRate
+            };
+
             _aviFileReading.Close();
 
-            var bytes = FileReader.ReadFile(dlg.FileName);
-
-            return new VideoFile();
+            return videoFile;
         }
     }
 }

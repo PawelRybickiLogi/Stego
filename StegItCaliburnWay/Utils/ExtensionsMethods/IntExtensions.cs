@@ -33,6 +33,13 @@ namespace StegItCaliburnWay.Utils.ExtensionsMethods
         {
             return (int) value & shiftDictionary[numberOfBits];
         }
+
+        public static int DivideRoundingUp(this int x, int y)
+        {
+            int remainder;
+            int quotient = Math.DivRem(x, y, out remainder);
+            return remainder == 0 ? quotient : quotient + 1;
+        }
     }
 
     

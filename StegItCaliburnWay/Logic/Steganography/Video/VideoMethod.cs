@@ -38,12 +38,12 @@ namespace StegItCaliburnWay.Logic.Steganography.Video
 
         public override VideoFile PerformDecoding(VideoViewModel videoViewModel)
         {
-            return _aviCoding.DecodeHiddenMessage();
+            return _aviCoding.DecodeHiddenMessage(videoViewModel.ContainerVideoFile);
         }
 
         public override VideoFile PerformHiding(VideoViewModel videoViewModel)
         {
-            return _aviCoding.CreateHiddenMessage();
+            return _aviCoding.CreateHiddenMessage(videoViewModel.ContainerVideoFile, videoViewModel.MessageToHide);
         }
     }
 }

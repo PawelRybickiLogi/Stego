@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -16,23 +17,26 @@ namespace StegItCaliburnWay.ViewModels
         {
             get
             {
-                return "Plik dźwiękowy kontenera obecny" + Environment.NewLine +
-                       "Ilość próbek: " + _hiddenMessageVideoFile + Environment.NewLine +
-                       "Bitów na próbkę: " + _hiddenMessageVideoFile + Environment.NewLine +
-                       "Ilość kanałów: " + _hiddenMessageVideoFile + Environment.NewLine +
-                       "Rozmiar w bajtach: " + _hiddenMessageVideoFile;
+                return 
+                    "Plik wideo ukrytej wiadomości obecny" + Environment.NewLine +
+                    "Lokalizacja pliku: " + _hiddenMessageVideoFile.FileName + Environment.NewLine +
+                    "Wysokość obrazu: " + _hiddenMessageVideoFile.FrameHeight + Environment.NewLine +
+                    "Szerokość obrazu: " + _hiddenMessageVideoFile.FrameWidth + Environment.NewLine +
+                    "Ilość klatek: " + _hiddenMessageVideoFile.FrameCount + Environment.NewLine +
+                    "Częstotliwość klatek/s: " + _hiddenMessageVideoFile.FrameRate;
             }
         }
 
-        public HiddenMessageVideoViewModel(VideoFile hiddenMessageVideoFile)
+        public HiddenMessageVideoViewModel(
+            VideoFile hiddenMessageVideoFile)
         {
             _hiddenMessageVideoFile = hiddenMessageVideoFile;
+
         }
 
         public void Clear()
         {
             _hiddenMessageVideoFile = null;
-
             NotifyOfPropertyChange(() => HiddenMessage);
         }
     }

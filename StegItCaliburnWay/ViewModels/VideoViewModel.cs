@@ -14,12 +14,14 @@ namespace StegItCaliburnWay.ViewModels
     public class VideoViewModel : Screen, IStegenographyMethodViewModel
     {
         private readonly FilePickerDialog _filePickerDialog;
+        private readonly AviFileReading _aviFileReading;
         private byte[] _containerRawMessage;
         private byte[] _messageToHide;
         private byte[] _hiddenMessage;
         private byte[] _hiddenRawMessage;
         private byte[] _decodedMessage;
         private object _hiddenMessageViewModel;
+        private string _containerVideoInfo;
 
         private VideoFile _hiddenMessageVideoFile;
         private VideoFile _containerVideoFile;
@@ -96,6 +98,16 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public string ContainerVideoInfo
+        {
+            get { return _containerVideoInfo; }
+            set
+            {
+                _containerVideoInfo = value;
+                NotifyOfPropertyChange(() => ContainerVideoInfo);
+            }
+        }
+
         public VideoFile HiddenMessageVideoFile
         {
             get { return _hiddenMessageVideoFile; }
@@ -129,16 +141,22 @@ namespace StegItCaliburnWay.ViewModels
 
         public void OpenReadDialog()
         {
-            VideoFile file = _filePickerDialog.OpenReadVideoDialog(_selectedVideoMethod.dialogType);
-            ContainerRawMessage = file.hiddenMessageBytes;
-            ContainerVideoFile = file;
+            ContainerVideoFile = _filePickerDialog.OpenReadVideoDialog(_selectedVideoMethod.dialogType);
+            ContainerRawMessage = ContainerVideoFile.hiddenMessageBytes;
+
+            ContainerVideoInfo =
+                "Plik wideo kontenera obecny" + Environment.NewLine +
+                "Wysokość obrazu: " + ContainerVideoFile.FrameHeight + Environment.NewLine +
+                "Szerokość obrazu: " + ContainerVideoFile.FrameWidth + Environment.NewLine +
+                "Ilość klatek: " + ContainerVideoFile.FrameCount + Environment.NewLine +
+                "Częstotliwość klatek/s: " + ContainerVideoFile.FrameRate;
         }
 
         public async Task Hide()
         {
-            VideoFile file = await PerformHiding();
-            HiddenRawMessage = file.hiddenMessageBytes;
-            HiddenMessageViewModel = new HiddenMessageVideoViewModel(file);
+            HiddenMessageVideoFile = await PerformHiding();
+            HiddenRawMessage = HiddenMessageVideoFile.hiddenMessageBytes;
+            HiddenMessageViewModel = new HiddenMessageVideoViewModel(HiddenMessageVideoFile);
         }
 
         private Task<VideoFile> PerformHiding()
@@ -171,6 +189,7 @@ namespace StegItCaliburnWay.ViewModels
             DecodedMessage = null;
             ContainerVideoFile = null;
             HiddenMessageVideoFile = null;
+            ContainerVideoInfo = null;
         }
     }
 }

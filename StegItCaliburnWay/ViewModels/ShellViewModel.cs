@@ -144,7 +144,7 @@ namespace StegItCaliburnWay.ViewModels
 
         public void HowToUse()
         {
-            MessageBox.Show("Tutaj jakiś tutorial");
+            MessageBox.Show("Tutaj jakaś forma wskazówek");
         }
 
         public void About()
@@ -154,7 +154,7 @@ namespace StegItCaliburnWay.ViewModels
                 "Jej zadaniem jest wykonanie algorytmów ukrywania danych," + Environment.NewLine +
                 "które zostały poddane analizie w częsci badawczej pracy." + Environment.NewLine + Environment.NewLine +
                 "Autor pracy:   Paweł Rybicki" + Environment.NewLine +
-                "Promotor:      Tomasz Xsięski" + Environment.NewLine + Environment.NewLine +
+                "Promotor:      Tomasz Xięski" + Environment.NewLine + Environment.NewLine +
                 "Uniwersyste Śląski," + Environment.NewLine +
                 "Wydział Informatyki i Nauki o Materiałach," + Environment.NewLine +
                 "Sosnowiec, 2016.");

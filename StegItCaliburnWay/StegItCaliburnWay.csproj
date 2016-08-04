@@ -91,6 +91,7 @@
     <Compile Include="Logic\Steganography\Audio\AudioMethod.cs" />
     <Compile Include="Logic\Steganography\Audio\Methods\AudioCodingMethod.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCoding.cs" />
+    <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCodingValidator.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\VideoCodingMethod.cs" />
     <Compile Include="Logic\Steganography\Video\VideoMethod.cs" />
     <Compile Include="Utils\Audio\AudioFile.cs" />
@@ -247,12 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\256bit_palette.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\win-8.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

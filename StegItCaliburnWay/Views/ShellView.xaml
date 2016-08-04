@@ -105,7 +105,7 @@
         </Grid>
 
         <Grid Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1"
-              Visibility="Hidden">
+              Visibility="{Binding LoaderVisibility}">
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="40*"></RowDefinition>
