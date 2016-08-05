@@ -1,12 +1,14 @@
 ﻿
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\App.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Dictionary1.xaml;;
+FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\ExecutableFilesView.xaml;;
+FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageAudioView.xaml;;
+FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageImageView.xaml;;
+FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageTextView.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\ImageView.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\ShellView.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\TextView.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\AudioView.xaml;;
 FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\VideoView.xaml;;
-FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageTextView.xaml;;
-FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageImageView.xaml;;
-FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageAudioView.xaml;;
+FC:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\Views\HiddenMessageExecutableFilesView.xaml;;
 

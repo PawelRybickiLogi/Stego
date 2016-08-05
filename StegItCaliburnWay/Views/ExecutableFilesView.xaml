@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="StegItCaliburnWay.Views.ExecutableFilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StegItCaliburnWay.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:converters="clr-namespace:StegItCaliburnWay.Logic.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:ByteToStringConverter x:Key="ByteToStringConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="90*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="45*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" Padding="4, 0, 10, 0" Text="Wybierz algorytm:"></TextBlock>
+
+            <ComboBox x:Name="ExecutableFilesMethods" Grid.Column="1"
+                DisplayMemberPath="Name"
+                SelectedItem="{Binding SelectedExecutableFilesMethod}">
+            </ComboBox>
+        </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="0">
+            <Image Source="{Binding ContainerRawMessage, Converter={StaticResource ByteToStringConverter}}"/>
+        </ScrollViewer>
+
+        <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"></Label>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Padding="0, 0, 10, 0" Text="Tekst do ukrycia:"></TextBlock>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="2">
+            <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding MessageToHide, Converter={StaticResource ByteToStringConverter}}"  />
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -27,13 +27,14 @@ namespace StegItCaliburnWay.ViewModels
             TextViewModel textViewModel,
             VideoViewModel videoViewModel,
             AudioViewModel soundViewModel,
+            ExecutableFilesViewModel executableFilesViewModel,
             FilePickerDialog filePickerDialog)
         {
             _filePickerDialog = filePickerDialog;
             
             Items.AddRange(new IStegenographyMethodViewModel[]
             {
-                textViewModel, imageViewModel, soundViewModel, videoViewModel
+                textViewModel, imageViewModel, soundViewModel, videoViewModel, executableFilesViewModel
             });
 
         }
@@ -142,6 +143,12 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public void CopyToClipboard()
+        {
+            Clipboard.SetText(new string(TextUtils.GetUTF8CharArrayFromByteStream(ActiveItem.DecodedMessage)));
+            MessageBox.Show("Wiadomość skopiowana!");
+        }
+
         public void HowToUse()
         {
             MessageBox.Show("Tutaj jakaś forma wskazówek");
@@ -171,14 +178,31 @@ namespace StegItCaliburnWay.ViewModels
             get { return ActiveItem.ContainerRawMessage != null && ActiveItem.MessageToHide != null; }
         }
 
-        public bool ShouldEnableSaveToFileFile
+        public bool ShouldEnableSaveToFile
         {
-            get { return ActiveItem.HiddenMessageViewModel != null; }
+            get { return ActiveItem.HiddenMessageViewModel != null && ActiveItem.DisplayName != "Wideo"; }
         }
 
         public bool ShouldEnableShowHiddenMessage
         {
             get { return ActiveItem.ContainerRawMessage != null; }
+        }
+
+        public Visibility ShouldShowHiddenMessageBeVisible
+        {
+            get { return ActiveItem.DecodedMessage != null
+                    ? Visibility.Hidden
+                    : Visibility.Visible; }
+        }
+
+        public Visibility ShouldCopyToClipboardBeVisible
+        {
+            get
+            {
+                return ShouldShowHiddenMessageBeVisible == Visibility.Visible
+                    ? Visibility.Collapsed
+                    : Visibility.Visible;
+            }
         }
 
         public bool ShouldEnableClear
@@ -189,9 +213,11 @@ namespace StegItCaliburnWay.ViewModels
         private void UpdateUI()
         {
             NotifyOfPropertyChange(() => ShouldEnableHide);
-            NotifyOfPropertyChange(() => ShouldEnableSaveToFileFile);
+            NotifyOfPropertyChange(() => ShouldEnableSaveToFile);
             NotifyOfPropertyChange(() => ShouldEnableShowHiddenMessage);
             NotifyOfPropertyChange(() => ShouldEnableClear);
+            NotifyOfPropertyChange(() => ShouldShowHiddenMessageBeVisible);
+            NotifyOfPropertyChange(() => ShouldCopyToClipboardBeVisible);
         }
     }
 }

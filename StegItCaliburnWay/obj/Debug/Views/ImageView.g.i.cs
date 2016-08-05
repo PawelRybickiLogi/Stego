@@ -10,7 +10,6 @@
 //------------------------------------------------------------------------------
 
 using Caliburn.Micro;
-using StegItCaliburnWay;
 using StegItCaliburnWay.Logic.Converters;
 using StegItCaliburnWay.Views;
 using System;

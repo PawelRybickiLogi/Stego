@@ -34,7 +34,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Video.Methods.Avi
         {
             _aviCodingValidator.CheckIfCanHideMessageOrThrow(containerVideoFile, messageToHide);
 
-            var singleFrameBitsCapacity = containerVideoFile.FrameHeight * containerVideoFile.FrameWidth;
+            var singleFrameBitsCapacity = containerVideoFile.FrameHeight * containerVideoFile.FrameWidth * bitsForPixel;
 
             var bitsFromMessageToSave = TextUtils.GetMessageBitArray(messageToHide);
 

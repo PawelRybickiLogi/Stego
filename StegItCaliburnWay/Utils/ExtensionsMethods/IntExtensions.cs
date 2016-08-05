@@ -40,6 +40,23 @@ namespace StegItCaliburnWay.Utils.ExtensionsMethods
             int quotient = Math.DivRem(x, y, out remainder);
             return remainder == 0 ? quotient : quotient + 1;
         }
+
+        public static byte[] GetBitsAs4ByteArray(this int x)
+        {
+            byte[] bytesToReturn = new byte[4];
+
+            BitArray bits = new BitArray(new[] { x });
+
+            for (int i = 0; i < 4; i++)
+            {
+                var oneByteFromBits = bits.GetBitArrayFromBitArrayRange(i * 8, 8);
+                var intFromArray = oneByteFromBits.GetIntFromBitArray();
+
+                bytesToReturn[i] = (byte) intFromArray;
+            }
+
+            return bytesToReturn;
+        }
     }
 
     

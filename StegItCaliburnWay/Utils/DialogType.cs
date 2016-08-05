@@ -15,6 +15,7 @@ namespace StegItCaliburnWay.Utils
         public static Type GifImage = new Type(".gif", "GIF Files (*.gif)|*.gif");
         public static Type Audio = new Type(".wav", "WAVE Files (*.wav)|*.wav");
         public static Type AviFiles = new Type(".avi", "AVI Files (*.avi)|*.avi");
+        public static Type Executable = new Type(".exe", "EXE Files (*.exe)|*.exe");
     }
 
     public class Type

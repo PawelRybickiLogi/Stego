@@ -99,9 +99,10 @@
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" IsEnabled="{Binding ShouldEnableSaveToFileFile}" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="0" IsEnabled="{Binding ShouldEnableSaveToFile}" Content="Zapisz do pliku" cal:Message.Attach="[Event Click]=[Action SaveToFile]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
             <Button Grid.Column="1" IsEnabled="{Binding ShouldEnableClear}" Content="Wyczyść wszystko" cal:Message.Attach="[Event Click]=[Action Clear]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
-            <Button Grid.Column="2" IsEnabled="{Binding ShouldEnableShowHiddenMessage}" Content="Pokaż ukrytą wiadomość" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="2" Visibility="{Binding ShouldShowHiddenMessageBeVisible}" IsEnabled="{Binding ShouldEnableShowHiddenMessage}" Content="Pokaż ukrytą wiadomość" cal:Message.Attach="[Event Click]=[Action Decode]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
+            <Button Grid.Column="2" Visibility="{Binding ShouldCopyToClipboardBeVisible}" Content="Skopiuj do schowka" cal:Message.Attach="[Event Click]=[Action CopyToClipboard]" HorizontalAlignment="Center" Padding="10, 0, 10, 0" Margin="10,10,10,10"  VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1"

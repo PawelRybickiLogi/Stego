@@ -64,6 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -90,6 +91,9 @@
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
     <Compile Include="Logic\Steganography\Audio\AudioMethod.cs" />
     <Compile Include="Logic\Steganography\Audio\Methods\AudioCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\ExecutableFiles\ExecutableCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\ExecutableFiles\ExecutableFilesMethod.cs" />
+    <Compile Include="Logic\Steganography\ExecutableFiles\Methods\EndOfFileCoding.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCoding.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCodingValidator.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\VideoCodingMethod.cs" />
@@ -117,6 +121,7 @@
     <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitArrayExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitmapDataExtensions.cs" />
+    <Compile Include="Utils\ExtensionsMethods\ByteExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\ColorExtensions.cs" />
     <Compile Include="Utils\ExtensionsMethods\ExtenstionMethods.cs" />
     <Compile Include="Utils\ExtensionsMethods\ImageExtensions.cs" />
@@ -137,7 +142,9 @@
     <Compile Include="Utils\Video\AviFileWriting.cs" />
     <Compile Include="Utils\Video\AviReadingMethods.cs" />
     <Compile Include="Utils\Video\VideoFile.cs" />
+    <Compile Include="ViewModels\ExecutableFilesViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageAudioViewModel.cs" />
+    <Compile Include="ViewModels\HiddenMessageExecutableFilesViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageImageViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageTextViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageVideoViewModel.cs" />
@@ -148,8 +155,14 @@
     <Compile Include="ViewModels\AudioViewModel.cs" />
     <Compile Include="ViewModels\TextViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
+    <Compile Include="Views\ExecutableFilesView.xaml.cs">
+      <DependentUpon>ExecutableFilesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HiddenMessageAudioView.xaml.cs">
       <DependentUpon>HiddenMessageAudioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HiddenMessageExecutableFilesView.xaml.cs">
+      <DependentUpon>HiddenMessageExecutableFilesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HiddenMessageImageView.xaml.cs">
       <DependentUpon>HiddenMessageImageView.xaml</DependentUpon>
@@ -184,7 +197,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ExecutableFilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HiddenMessageAudioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HiddenMessageExecutableFilesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,6 +270,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -80,3 +80,7 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageA
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageAudioView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageVideoView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageVideoView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ExecutableFilesView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ExecutableFilesView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageExecutableFilesView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageExecutableFilesView.baml

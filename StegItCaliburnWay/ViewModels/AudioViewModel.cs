@@ -198,7 +198,6 @@ namespace StegItCaliburnWay.ViewModels
         {
             return Task.Factory.StartNew(() =>
             {
-
                 AudioFile file = _selectedAudioMethod.PerformDecoding(this);
                 DecodedMessage = file.hiddenMessageBytes;
             });
