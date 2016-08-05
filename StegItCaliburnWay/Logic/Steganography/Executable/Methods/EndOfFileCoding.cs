@@ -30,6 +30,7 @@ namespace StegItCaliburnWay.Logic.Steganography.ExecutableFiles.Methods
                 hiddenMessage[i + container.Length] = message[i];
             }
 
+            //add message length
             for (int i = 0; i < messageLengthAsByteArray.Length; i++)
             {
                 hiddenMessage[i + container.Length + message.Length] = messageLengthAsByteArray[i];

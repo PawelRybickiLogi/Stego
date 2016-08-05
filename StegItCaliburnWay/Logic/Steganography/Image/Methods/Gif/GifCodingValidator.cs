@@ -19,8 +19,8 @@ namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Gif
             if (containerPixelFormat != PixelFormat.Format8bppIndexed)
                 throw new Exception("Kontener posiada nieprawidłowy format! Wymagany format to 8 bitowy indeksowany GIF");
 
-            if (container.Palette.Entries.Length < 128)
-                throw new Exception("Obraz GIF posiada bardzo małą maletę kolorów (64 bajtów lub mniej). " + Environment.NewLine +
+            if (container.Palette.Entries.Length < 64)
+                throw new Exception("Obraz GIF posiada bardzo małą maletę kolorów (32 bajtów lub mniej). " + Environment.NewLine +
                                     "Zaleca się stosowanie przynajmniej 128 lub 256 bajtowej palety kolorów");
 
             var imageCapacity = container.Height * container.Width;

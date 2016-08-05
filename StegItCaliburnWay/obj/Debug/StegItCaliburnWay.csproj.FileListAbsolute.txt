@@ -58,7 +58,6 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\MahApps.Metro.pdb
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\MahApps.Metro.xml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\bin\Debug\Ninject.xml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\App.baml
-C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Dictionary1.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ImageView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ShellView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\TextView.baml

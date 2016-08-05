@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:converters="clr-namespace:StegItCaliburnWay.Logic.Converters"
+             WindowStartupLocation="CenterScreen"
 
              GlowBrush="{DynamicResource AccentColorBrush}"
              ShowIconOnTitleBar="False"

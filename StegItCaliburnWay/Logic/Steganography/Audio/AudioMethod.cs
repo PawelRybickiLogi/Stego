@@ -25,7 +25,7 @@ namespace StegItCaliburnWay.Logic.Steganography.AudioSteganography
 
             public override string Name
             {
-                get { return "Wave (8/16/24 bitów/próbkę)"; }
+                get { return "Wave (8/16/24/32 bitów/próbkę)"; }
             }
 
             public override Type dialogType
