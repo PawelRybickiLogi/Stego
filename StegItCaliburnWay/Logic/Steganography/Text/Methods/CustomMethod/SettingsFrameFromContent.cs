@@ -33,8 +33,6 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
 
         public SettingsFrameFromContent(byte[] content)
         {
-            char[] contentcik = TextUtils.GetUTF8CharArrayFromByteStream(content);
-
             BitArray contentSettingsBits = content.GetSettingsFrame();
 
             var jumpBits = contentSettingsBits.GetBitArrayFromBitArrayRange(0, 12);

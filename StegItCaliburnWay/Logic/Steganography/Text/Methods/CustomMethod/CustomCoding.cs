@@ -78,7 +78,6 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
 
             }
 
-            var bytes = Encoding.UTF8.GetBytes(hiddenMessage);
             return Encoding.UTF8.GetBytes(hiddenMessage);
         }
 

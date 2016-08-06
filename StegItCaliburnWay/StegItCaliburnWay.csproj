@@ -91,9 +91,9 @@
     <Compile Include="Logic\Converters\ByteToImageConverter.cs" />
     <Compile Include="Logic\Steganography\Audio\AudioMethod.cs" />
     <Compile Include="Logic\Steganography\Audio\Methods\AudioCodingMethod.cs" />
-    <Compile Include="Logic\Steganography\ExecutableFiles\ExecutableCodingMethod.cs" />
-    <Compile Include="Logic\Steganography\ExecutableFiles\ExecutableFilesMethod.cs" />
-    <Compile Include="Logic\Steganography\ExecutableFiles\Methods\EndOfFileCoding.cs" />
+    <Compile Include="Logic\Steganography\Executable\ExecutableCodingMethod.cs" />
+    <Compile Include="Logic\Steganography\Executable\ExecutableFilesMethod.cs" />
+    <Compile Include="Logic\Steganography\Executable\Methods\EndOfFileCoding.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCoding.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\Avi\AviCodingValidator.cs" />
     <Compile Include="Logic\Steganography\Video\Methods\VideoCodingMethod.cs" />
@@ -116,7 +116,7 @@
     <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\SettingsFrameFromContent.cs" />
     <Compile Include="Logic\Steganography\Text\Methods\CustomMethod\ValueType.cs" />
     <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticCodingValidator.cs" />
-    <Compile Include="Logic\Steganography\Text\Methods\SpaceCoding\SpaceCodingValidator.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SpaceMethod\SpaceCodingValidator.cs" />
     <Compile Include="Utils\Audio\WaveFile.cs" />
     <Compile Include="Utils\DialogType.cs" />
     <Compile Include="Utils\ExtensionsMethods\BitArrayExtensions.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="Logic\Converters\ByteToStringConverter.cs" />
     <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticCoding.cs" />
     <Compile Include="Logic\Steganography\Text\Methods\SemanticMethod\SemanticLettersValues.cs" />
-    <Compile Include="Logic\Steganography\Text\Methods\SpaceCoding\SpaceCoding.cs" />
+    <Compile Include="Logic\Steganography\Text\Methods\SpaceMethod\SpaceCoding.cs" />
     <Compile Include="Logic\Steganography\Text\Methods\TextCodingMethod.cs" />
     <Compile Include="Logic\Steganography\Text\TextMethod.cs" />
     <Compile Include="Utils\Image\ImageFile.cs" />
