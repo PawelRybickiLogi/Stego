@@ -11,9 +11,13 @@ namespace StegItCaliburnWay.ViewModels
     {
         private byte[] _hiddenMessageText;
 
-        public byte[] HiddenMessage
+        public string HiddenMessage
         {
-            get { return _hiddenMessageText; }
+            get 
+            { 
+                return "Plik wykonywalne z ukrytą wiadomością  obecny" + Environment.NewLine +
+                       "Rozmiar w bajtach: " + _hiddenMessageText.Length;
+            }
         }
 
         public HiddenMessageExecutableFilesViewModel(byte[] hiddenMessageText)

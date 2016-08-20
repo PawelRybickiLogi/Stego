@@ -16,8 +16,18 @@ namespace StegItCaliburnWay.ViewModels
         private byte[] _messageToHide;
         private byte[] _containerRawMessage;
         private byte[] _decodedMessage;
+        private string _containerFileInfo;
+        private object _hiddenMessageViewModel;
 
-        public object HiddenMessageViewModel { get; private set; }
+        public object HiddenMessageViewModel
+        {
+            get { return _hiddenMessageViewModel; }
+            set
+            {
+                _hiddenMessageViewModel = value;
+                NotifyOfPropertyChange(() => HiddenMessageViewModel);
+            }
+        }
 
         public List<ExecutableFilesMethod> ExecutableFilesMethods { get; set; }
         private ExecutableFilesMethod _selectedExecutableFilesMethod;
@@ -82,6 +92,16 @@ namespace StegItCaliburnWay.ViewModels
             }
         }
 
+        public string ContainerFileInfo
+        {
+            get { return _containerFileInfo; }
+            set
+            {
+                _containerFileInfo = value;
+                NotifyOfPropertyChange(() => ContainerFileInfo);
+            }
+        }
+
         public byte[] DecodedMessage
         {
             get { return _decodedMessage; }
@@ -116,6 +136,10 @@ namespace StegItCaliburnWay.ViewModels
         public void OpenReadDialog()
         {
             ContainerRawMessage = _filePickerDialog.OpenReadDialog(_selectedExecutableFilesMethod.dialogType);
+
+            ContainerFileInfo =
+                "Plik wykonywalny kontenera obecny" + Environment.NewLine +
+                "Rozmiar w bajtach: " + ContainerRawMessage.Length;
         }
 
         public void Save()
@@ -130,6 +154,7 @@ namespace StegItCaliburnWay.ViewModels
             DecodedMessage = null;
             HiddenMessageViewModel = null;
             HiddenRawMessage = null;
+            ContainerFileInfo = null;
         }
     }
 }

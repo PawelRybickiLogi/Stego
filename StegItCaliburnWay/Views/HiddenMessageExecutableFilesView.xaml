@@ -11,7 +11,8 @@
         <converters:ByteToStringConverter x:Key="ByteToStringConverter" />
     </UserControl.Resources>
     <ScrollViewer>
-        <TextBlock TextWrapping="Wrap" Padding="2, 2, 2, 2" Text="{Binding HiddenMessage, Converter={StaticResource ByteToStringConverter}}"  />
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Padding="2, 2, 2, 2" 
+                   Text="{Binding HiddenMessage}" />
     </ScrollViewer>
 
 </UserControl>

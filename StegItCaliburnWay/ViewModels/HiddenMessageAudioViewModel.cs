@@ -16,7 +16,7 @@ namespace StegItCaliburnWay.ViewModels
         {
             get
             {
-                return "Plik dźwiękowy kontenera obecny" + Environment.NewLine +
+                return "Plik dźwiękowy z ukrytą wiadomością obecny" + Environment.NewLine +
                        "Ilość próbek: " + _hiddenMessageAudioFile.waveFile.totalSamples + Environment.NewLine +
                        "Bitów na próbkę: " + _hiddenMessageAudioFile.waveFile.bitsPerSample + Environment.NewLine +
                        "Ilość kanałów: " + _hiddenMessageAudioFile.waveFile.channels + Environment.NewLine +
