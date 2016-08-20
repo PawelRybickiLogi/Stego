@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StegItCaliburnWay.Logic.Steganography.Image.Methods.Bitmap32;
 using StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap24;
 using StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Gif;
 using StegItCaliburnWay.Utils;

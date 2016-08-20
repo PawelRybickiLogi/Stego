@@ -29,8 +29,8 @@ namespace StegItCaliburnWay.Logic.Steganography.AudioSteganography.Methods.Wave
 
             var bitsFromMessageToSave = TextUtils.GetMessageBitArray(messageToHide);
 
-            var hidingSteps = bitsFromMessageToSave.Length / CHANGING_SAMPLES_FACTOR;
             var bitsPerSampleThatCanBeHide = containerAudioFile.waveFile.bitsPerSample / CHANGING_SAMPLES_FACTOR;
+            var hidingSteps = bitsFromMessageToSave.Length / bitsPerSampleThatCanBeHide;
 
             var samples = containerAudioFile.waveFile.samples;
 

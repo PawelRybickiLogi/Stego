@@ -58,7 +58,6 @@ namespace StegItCaliburnWay.Logic.Steganography.Video.Methods.Avi
 
             hiddenMessageFile.CopyTo(pathToCopyHiddenFile, true); 
 
-
             _aviFileWriting.Open(pathToCopyHiddenFile, containerVideoFile.FrameRate);
 
             var additionalBits = bitsFromMessageToSave.Length % bitsForPixel;

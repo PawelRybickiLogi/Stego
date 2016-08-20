@@ -35,6 +35,8 @@ namespace StegIt.Text.StegoTools
 
             for (var i = 0; i < openedFile.Length; i++)
             {
+                Console.WriteLine("Step: " + i + " of " + openedFile.Length);
+
                 if (listOfLettersThatCanBeChanged.ContainsKey(openedFile[i]) &&
                     insertedHiddenBits < bitsFromFileToSave.Length)
                 {

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Drawing;
-using System.Drawing.Imaging;
+using StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods;
 using StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap32;
 using StegItCaliburnWay.Utils;
 using StegItCaliburnWay.Utils.ExtensionsMethods;
 
-namespace StegItCaliburnWay.Logic.Steganography.ImageSteganography.Methods.Bitmap24
+namespace StegItCaliburnWay.Logic.Steganography.Image.Methods.Bitmap32
 {
     public class Bitmap32Coding : ImageCodingMethod
     {

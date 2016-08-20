@@ -13,7 +13,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Video.Methods.Avi
         {
             var bitsFromMessageToSave = TextUtils.GetMessageBitArray(messageToHide);
 
-            var videoCapacity = containerVideoFile.FrameCount * containerVideoFile.FrameHeight * containerVideoFile.FrameWidth;
+            var videoCapacity = containerVideoFile.FrameCount * containerVideoFile.FrameHeight * containerVideoFile.FrameWidth * 3;
 
             if (bitsFromMessageToSave.Length > videoCapacity)
                 throw new Exception("Wiadomość jest zbyt długa aby umieścić ją w pliku .avi" + Environment.NewLine +

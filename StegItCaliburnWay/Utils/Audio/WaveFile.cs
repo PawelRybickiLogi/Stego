@@ -26,7 +26,7 @@ namespace StegItCaliburnWay.Utils.Audio
             channels = BitConverter.ToUInt16(data, 0x16);
             bitsPerSample = BitConverter.ToUInt16(data, 0x22);
 
-            totalSamples = (BitConverter.ToUInt32(data, 0x2A) / channels) / (bitsPerSample / 8);
+            totalSamples = (uint) ((data.Length - 44) / (bitsPerSample / 8) / channels);
             samples = new uint[totalSamples];
 
             int i = 0;

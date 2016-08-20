@@ -64,6 +64,7 @@ namespace StegIt.Text.StegoTools
 
             for (var i = 0; i < containerText.Length; i++)
             {
+                Console.WriteLine("Step: " + i + " of " + containerText.Length);
                 hiddenMessage[i + insertedSpaces] = containerText[i];
 
                 if (spacesIndex.Contains(i) && insertedHiddenBits < bitsFromFileToSave.Length)

@@ -40,6 +40,8 @@ namespace StegItCaliburnWay.Logic.Steganography.TextSteganography.Methods.Custom
 
             for (int i = 0; i < container.Length; i++)
             {
+                Console.WriteLine("Step: " + i + " of " + container.Length);
+
                 if (i < settingsBitArray.Length + messageBitArray.Length)
                 {
                     //Hide header
