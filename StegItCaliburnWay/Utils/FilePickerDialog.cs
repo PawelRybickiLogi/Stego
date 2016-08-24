@@ -38,7 +38,7 @@ namespace StegItCaliburnWay
 
             var bitmap = (Bitmap) Image.FromFile(dlg.FileName, true);
             var bytes = FileReader.ReadFile(dlg.FileName);
-
+ 
             return new ImageFile(bitmap, bytes);
         }
 

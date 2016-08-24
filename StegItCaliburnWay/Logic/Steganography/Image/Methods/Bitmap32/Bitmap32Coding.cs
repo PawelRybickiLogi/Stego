@@ -36,6 +36,7 @@ namespace StegItCaliburnWay.Logic.Steganography.Image.Methods.Bitmap32
             int x = 0, y = 0;
             for (;y < containerDeepCopy.Height; y++)
             {
+                x = 0;
                 if (pixelsEdited >= pixelsToEdit)
                 {
                     //_bitmapEoFmarker.markEndOfImageMessageIn32BitImage(x, y - 1, containerDeepCopy);
