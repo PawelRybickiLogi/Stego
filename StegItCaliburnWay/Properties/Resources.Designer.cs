@@ -63,9 +63,9 @@ namespace StegItCaliburnWay.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _256bitPalette {
+        internal static System.Drawing.Bitmap StegItPng {
             get {
-                object obj = ResourceManager.GetObject("_256bitPalette", resourceCulture);
+                object obj = ResourceManager.GetObject("StegItPng", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

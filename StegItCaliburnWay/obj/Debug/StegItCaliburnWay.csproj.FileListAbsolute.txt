@@ -83,3 +83,5 @@ C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ExecutableFile
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\ExecutableFilesView.baml
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageExecutableFilesView.g.cs
 C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HiddenMessageExecutableFilesView.baml
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HintsView.g.cs
+C:\Users\Rybzor\Documents\Stego\StegItCaliburnWay\obj\Debug\Views\HintsView.baml

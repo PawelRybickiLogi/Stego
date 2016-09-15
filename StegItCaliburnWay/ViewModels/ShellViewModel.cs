@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Shapes;
 using Caliburn.Micro;
 using StegItCaliburnWay.Utils;
+using StegItCaliburnWay.Views;
 
 namespace StegItCaliburnWay.ViewModels
 {
@@ -151,7 +152,10 @@ namespace StegItCaliburnWay.ViewModels
 
         public void HowToUse()
         {
-            MessageBox.Show("Tutaj jakaś forma wskazówek");
+
+           
+            var newWindow = new HintsView();
+            newWindow.Show();
         }
 
         public void About()

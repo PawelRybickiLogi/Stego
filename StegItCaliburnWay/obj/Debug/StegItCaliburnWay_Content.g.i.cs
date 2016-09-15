@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("logic/steganography/imagesteganography/resources/win-8.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("utils/images/stegitpng.png")]
 
 

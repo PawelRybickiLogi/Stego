@@ -148,6 +148,7 @@
     <Compile Include="ViewModels\HiddenMessageImageViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageTextViewModel.cs" />
     <Compile Include="ViewModels\HiddenMessageVideoViewModel.cs" />
+    <Compile Include="ViewModels\HintsViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\IStegenographyMethodViewModel.cs" />
     <Compile Include="Logic\Steganography\IStegenographyOperations.cs" />
@@ -172,6 +173,9 @@
     </Compile>
     <Compile Include="Views\HiddenMessageVideoView.xaml.cs">
       <DependentUpon>HiddenMessageVideoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HintsView.xaml.cs">
+      <DependentUpon>HintsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
@@ -214,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HiddenMessageVideoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HintsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,7 +274,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\StegItPng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StegItTxt.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

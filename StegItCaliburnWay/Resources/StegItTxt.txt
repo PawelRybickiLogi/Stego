@@ -1,0 +1,16 @@
+Interfejs u¿ytkownika zosta³ podzielony na cztery g³ówne obszary robocze wyœwietlaj¹ce dane (1-4), zak³adki umo¿liwiaj¹ce prze³¹czanie siê miêdzy ró¿nymi rodzajami noœników danych i rozwijana lista umo¿liwiaj¹ca wybranie konkretnego algorytmu dla zadanego noœnika (5-7) oraz przyciski do wykonywania operacji zwi¹zanych z ukrywaniem lub odzyskiwaniem ukrytych informacji (8-13). 
+
+Zgodnie z numeracj¹ na rysunku 28, komponenty o zadanym numerze pe³ni¹ nastêpuj¹ce funkcje: 
+1.	Obszar z kontenerem na dane. Przedstawia on kontener, w którym u¿ytkownik programu mo¿e umieœciæ dane Ÿród³owe. W zale¿noœci od wybranego typu danych mo¿e to byæ tekst, obrazek, lub informacje o za³adowanym pliku dŸwiêkowym czy wideo. Treœæ kontenera wczytuje siê wybieraj¹c przycisk (8). 
+2.	Wiadomoœæ, która bêdzie ukrywana w za³adowanym noœniku. Aby wczytaæ wiadomoœæ nale¿y wybraæ przycisk (9).
+3.	Obszar prezentuj¹cy kontener wraz z ukryt¹ w nim wiadomoœci¹.
+4.	Obszar, który wyœwietla ukryt¹ w kontenerze wiadomoœæ. 
+5.	Zak³adki z typami noœników, w których mo¿na ukryæ dane.
+6.	Menu kontekstowe, które umo¿liwia wyœwietlenie informacji o autorze aplikacji, czy wskazówek odnoœnie korzystania z programu oraz zamkniêcie aplikacji.
+7.	Rozwijana lista zawieraj¹ca dostêpne metody steganograficzne dla wybranej kategorii noœnika danych.
+8.	Przycisk akcji umo¿liwiaj¹cy wczytanie kontenera.
+9.	Przycisk akcji umo¿liwiaj¹cy wczytanie wiadomoœci do ukrycia.
+10.	Przycisk akcji ukrywaj¹cy wiadomoœæ i wyœwietlaj¹cy j¹ lub informacje o niej w polu (3).
+11.	Przycisk akcji umo¿liwiaj¹cy zapisanie ukrytej wiadomoœci do pliku.
+12.	Przycisk akcji umo¿liwiaj¹cy kasacjê wyborów u¿ytkownika, takich jak za³adowana wiadomoœæ do ukrycia, lub kontener na dane. 
+13.	Przycisk akcji odczytuj¹cy ukryt¹ wiadomoœæ znajduj¹c¹ siê w kontenerze (1). Po odczytaniu wiadomoœci przycisk ten umo¿liwia skopiowanie jej do systemowego schowka.

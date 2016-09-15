@@ -1,0 +1,54 @@
+﻿<Window x:Class="StegItCaliburnWay.Views.HintsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:StegItCaliburnWay.Logic.Converters"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             Height="820" Width="820">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="StegItImage" UriSource="/Resources/StegItPng.png" />
+            <system:String xml:space="preserve" x:Key="StegItText">
+                
+Interfejs użytkownika został podzielony na cztery główne obszary robocze wyświetlające dane (1-4), zakładki umożliwiające przełączanie się między różnymi rodzajami nośników danych i rozwijana lista umożliwiająca wybranie konkretnego algorytmu dla zadanego nośnika (5-7) oraz przyciski do wykonywania operacji związanych z ukrywaniem lub odzyskiwaniem ukrytych informacji (8-13). 
+
+Zgodnie z numeracją na rysunku 28, komponenty o zadanym numerze pełnią następujące funkcje: 
+1. Obszar z kontenerem na dane. Przedstawia on kontener, w którym użytkownik programu może umieścić dane źródłowe. W zależności od wybranego typu danych może to być tekst, obrazek, lub informacje o załadowanym pliku dźwiękowym czy wideo. Treść kontenera wczytuje się wybierając przycisk (8). 
+2. Wiadomość, która będzie ukrywana w załadowanym nośniku. Aby wczytać wiadomość należy wybrać przycisk (9).
+3. Obszar prezentujący kontener wraz z ukrytą w nim wiadomością.
+4. Obszar, który wyświetla ukrytą w kontenerze wiadomość. 
+5. Zakładki z typami nośników, w których można ukryć dane.
+6. Menu kontekstowe, które umożliwia wyświetlenie informacji o autorze aplikacji, czy wskazówek odnośnie korzystania z programu oraz zamknięcie aplikacji.
+7. Rozwijana lista zawierająca dostępne metody steganograficzne dla wybranej kategorii nośnika danych.
+8. Przycisk akcji umożliwiający wczytanie kontenera.
+9. Przycisk akcji umożliwiający wczytanie wiadomości do ukrycia.
+10. Przycisk akcji ukrywający wiadomość i wyświetlający ją lub informacje o niej w polu (3).
+11. Przycisk akcji umożliwiający zapisanie ukrytej wiadomości do pliku.
+12. Przycisk akcji umożliwiający kasację wyborów użytkownika, takich jak załadowana wiadomość do ukrycia, lub kontener na dane. 
+13. Przycisk akcji odczytujący ukrytą wiadomość znajdującą się w kontenerze (1). Po odczytaniu wiadomości przycisk ten umożliwia skopiowanie jej do systemowego schowka. 
+                
+            </system:String> 
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ScrollViewer Grid.Row="0">
+            <Image Width="812" Height="814" Source="{StaticResource StegItImage}"/>
+        </ScrollViewer>
+
+        <TextBlock 
+            TextWrapping="Wrap" Foreground="AliceBlue"
+            Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+            FontWeight="Bold" Margin="0, 8, 0 , 0" Padding="4, 0, 10, 0" Text="{StaticResource StegItText}"></TextBlock>
+
+    </Grid>
+</Window>
